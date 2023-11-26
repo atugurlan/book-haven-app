@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+img {
+    width: 50%;
+}
+
+.details {
+    width: 25%;
+    box-sizing: border-box; 
+    padding: 0 20px;
+}
+
+.price {
+    width: 25%;
+    box-sizing: border-box; 
+    padding: 0 20px; 
+    align-items: center; 
+}

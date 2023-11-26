@@ -32,4 +32,10 @@ export class BookService {
 
     return books;
   }
+
+  async getBookByBID(bid:string):Promise<Book | undefined> {
+    const books = await this.allBooks();
+    return books.find(book => book.bid == bid);
+  } 
+
 }

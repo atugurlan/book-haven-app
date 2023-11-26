@@ -1,19 +1,21 @@
 <ul>
     <li *ngFor="let book of books">
         <div class="content">
-            <img src="{{book.bookcoverURL}}" alt="{{book.title}} cover">
-            <div class="name">
-                <p>Title: {{book.title}}</p>
-                <p>Author: {{book.author}}</p>
-            </div>
-            <div class="product-item-footer">
-                <div class="tags">
-                    <div><span>{{book.genre}}</span></div>
+            <a routerLink="/book/{{book.bid}}">
+                <img src="{{book.bookcoverURL}}" alt="{{book.title}} cover">
+                <div class="name">
+                    <p>Title: {{book.title}}</p>
+                    <p>Author: {{book.author}}</p>
                 </div>
-            </div>
-            <div class="price">
-                <p>Price: {{book.price}}</p>
-            </div>
+                <div class="product-item-footer">
+                    <div class="tags">
+                        <div><span>{{book.genre}}</span></div>
+                    </div>
+                </div>
+                <div class="price">
+                    <p>Price: {{book.price}} lei</p>
+                </div>
+            </a>
         </div>
     </li>
 </ul>

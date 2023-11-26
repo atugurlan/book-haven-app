@@ -4,7 +4,7 @@ export class Book {
     title?: string;
     author?: string;
     price?: string;
-    quantity?: string;
+    quantity?: number;
     genre?: string;
     description?: string;
 }

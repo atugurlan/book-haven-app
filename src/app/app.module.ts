@@ -23,6 +23,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { HotToastModule, HotToastService } from '@ngneat/hot-toast';
 import { provideHotToastConfig } from '@ngneat/hot-toast';
 import { HomeComponent } from './components/home/home.component';
+import { BookPageComponent } from './components/book-page/book-page.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { HomeComponent } from './components/home/home.component';
     AppComponent,
     LoginComponent,
     SignUpComponent,
-    HomeComponent
+    HomeComponent,
+    BookPageComponent
   ],
   imports: [
     BrowserModule,
