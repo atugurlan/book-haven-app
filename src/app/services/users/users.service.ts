@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Firestore, doc } from '@angular/fire/firestore';
+import { DocumentData, Firestore, doc } from '@angular/fire/firestore';
 import { ProfileUser } from '../../models/user-profile';
-import { Observable, from, of, switchMap } from 'rxjs';
+import { Observable, catchError, from, map, of, switchMap, tap } from 'rxjs';
 import { setDoc, updateDoc } from '@firebase/firestore';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { docData } from '@angular/fire/firestore';
