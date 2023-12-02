@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class LoginComponent {
   constructor(
     private authService: AuthenticationService, 
     private router: Router,
-    private toast: HotToastService ) {}
+    private toast: HotToastService,
+    private toastr: ToastrService ) {}
 
   get email() {
     return this.loginForm.get('email');
@@ -36,16 +38,17 @@ export class LoginComponent {
     const { email, password } = this.loginForm.value;
 
     if(email && password) {
-      this.authService.login(email, password).pipe(
-        this.toast.observe({
-          success: 'Logged in successfully',
-          loading: 'Logging in...',
-          error: 'There was an error'
-        })
-      ).subscribe( () => {
-        this.router.navigate(['']);
+      this.authService.login(email, password).subscribe({
+        next: (value) => {
+          this.toastr.success('Logged in successfully');
+          this.router.navigate(['']);
+        },
+        error: (error) => {
+          this.toastr.error('Error at login!', 'Error', {
+            positionClass: 'fixed-toast-position'
+          });
+        }
       });
     }
-
   }
 }

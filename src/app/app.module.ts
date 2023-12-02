@@ -22,6 +22,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 
 import { HotToastModule, HotToastService } from '@ngneat/hot-toast';
 import { provideHotToastConfig } from '@ngneat/hot-toast';
+import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './components/home/home.component';
 import { BookPageComponent } from './components/book-page/book-page.component';
 
@@ -46,7 +47,12 @@ import { BookPageComponent } from './components/book-page/book-page.component';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    HotToastModule.forRoot()
+    HotToastModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-full-width', // Configures the position of the toast
+      preventDuplicates: true, // Prevents duplicate toasts from being shown
+      closeButton: true // Show close button on toast notifications
+    })
   ],
   providers: [
     AuthenticationService, 
