@@ -3,11 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo, AuthGuard } from '@angular/fire/auth-guard';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/signup/signup.component';
+import { HomeComponent } from './components/home/home.component';
+import { BookPageComponent } from './components/book-page/book-page.component';
 
 // const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 // const redirectToLanding = () => redirectLoggedInTo(['landing']);
 
 const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    component: HomeComponent
+  },
   {
     path: 'login',
     component: LoginComponent
@@ -15,6 +22,10 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignUpComponent
+  },
+  {
+    path: 'book/:bid',
+    component: BookPageComponent
   }
 ];
 

@@ -1,0 +1,107 @@
+<div *ngIf="book">
+    <div class="container">
+        <div class="image-container">
+            <img [src]="book.bookcoverURL" [alt]="book.title">
+        </div>
+
+        <div class="details">
+            <div class="title">{{book.title}}</div>
+            <div class="author">{{book.author}}</div>
+            <br>
+            <hr>
+            <br>
+            <div class="description">{{book.description}}</div>
+        </div>
+
+        <div class="price">
+            <div class="price">{{book.price}} lei</div>
+            <div class="stock">
+                <p class="in-stock" *ngIf="book.quantity != 0">In stock</p>
+                <p class="out-of-stock" *ngIf="book.quantity == 0">Out of stock</p>
+            </div>
+            <div class="cart">
+                <button>Add to cart</button>
+            </div>
+            <div class="wishlist">
+                <button>Wishlist</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <form class="star-rating">
+        <input class="radio-input" type="radio" id="star5" name="star-input" value="5" />
+        <label class="radio-label" for="star5" title="5 stars">5 stars</label>
+
+        <input class="radio-input" type="radio" id="star4" name="star-input" value="4" />
+        <label class="radio-label" for="star4" title="4 stars">4 stars</label>
+
+        <input class="radio-input" type="radio" id="star3" name="star-input" value="3" />
+        <label class="radio-label" for="star3" title="3 stars">3 stars</label>
+
+        <input class="radio-input" type="radio" id="star2" name="star-input" value="2" />
+        <label class="radio-label" for="star2" title="2 stars">2 stars</label>
+
+        <input class="radio-input" type="radio" id="star1" name="star-input" value="1" />
+        <label class="radio-label" for="star1" title="1 star">1 star</label>
+    </form> -->
+
+    <div class="reviews">
+        <div class="reviews-summary">
+            <h2>Reviews summary</h2>
+            <div>
+                Product rating: {{stars_average}} out of 5
+                <meter min="0" max="5" value="{{stars_average}}"></meter>
+            </div>
+        
+            <div>
+                <div>
+                    <label class="radio-label"></label>
+                    <label class="radio-label"></label>
+                    <label class="radio-label"></label>
+                    <label class="radio-label"></label>
+                    <label class="radio-label"></label>
+                    {{stars_percentage[4]}}%
+                </div>
+            
+                <div>
+                    <label class="radio-label"></label>
+                    <label class="radio-label"></label>
+                    <label class="radio-label"></label>
+                    <label class="radio-label"></label>
+                    {{stars_percentage[3]}}%
+                </div>
+            
+                <div>
+                    <label class="radio-label"></label>
+                    <label class="radio-label"></label>
+                    <label class="radio-label"></label>
+                    {{stars_percentage[2]}}%
+                </div>
+        
+                <div>
+                    <label class="radio-label"></label>
+                    <label class="radio-label"></label>
+                    {{stars_percentage[1]}}%
+                </div>
+        
+                <div>
+                    <label class="radio-label"></label>
+                    {{stars_percentage[0]}}%
+                </div>
+            </div>
+        </div>
+        <div class="opinions">
+            <h2>User Opinions</h2>
+
+            <div *ngFor="let review of reviews" class="opinion">
+              <div class="user">{{ review.name }}</div>
+
+              <div class="stars">
+                <label *ngFor="let _ of [].constructor(review.stars); let i = index" class="radio-label"></label>
+              </div>              
+
+              <div class="comment">{{ review.review }}</div>
+            </div>
+        </div>
+    </div>
+</div>

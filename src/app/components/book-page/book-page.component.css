@@ -1,0 +1,198 @@
+.container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+	margin-top: 2rem;
+}
+
+img {
+    width: 40%;
+}
+
+.details {
+    width: 35%;
+    box-sizing: border-box; 
+    padding: 0 20px;
+    text-align: left;
+}
+
+.details .title {
+    font-size: 1.5em; 
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.details .author {
+    font-style: italic; 
+    color: #555; 
+    margin-bottom: 10px; 
+}
+
+.details .description {
+    line-height: 1.5; 
+}
+
+.price {
+    width: 25%;
+    box-sizing: border-box; 
+    padding: 0 20px; 
+    align-items: center; 
+    text-align: center; 
+}
+
+.price .price {
+    font-size: 1.2em; 
+    font-weight: bold;
+    margin-bottom: 10px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.price .in-stock {
+    font-style: italic;
+    color: #007700;
+}
+
+.price .out-of-stock {
+    font-style: italic;
+    color: #FF0000;
+}
+
+.reviews {
+	margin-left: 5rem;
+	margin-top: 3rem;
+	display: flex;
+}
+
+.reviews-summary {
+	width: 40%;
+}
+
+.opinions {
+	width: 60%;
+}
+
+.star-rating {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+}
+
+.star-rating .radio-input {
+	position: fixed;
+	opacity: 0;
+	pointer-events: none;
+}
+  
+.star-rating .radio-label {
+	cursor: pointer;
+	font-size: 0;
+	color: rgba(0,0,0,0.2);
+	transition: color 0.1s ease-in-out;
+}
+  
+.star-rating .radio-label:before {
+	content: "★";
+	display: inline-block;
+	font-size: 32px;
+}
+
+.star-rating .radio-input:checked ~ .radio-label {
+	color: #ffc700;
+	color: gold;
+}
+  
+.star-rating .radio-label:hover, .radio-label:hover ~ .radio-label {
+	color: goldenrod;
+}
+  
+.star-rating .radio-input:checked + .radio-label:hover,
+.radio-input:checked + .radio-label:hover ~ .radio-label,
+.radio-input:checked ~ .radio-label:hover,
+.radio-input:checked ~ .radio-label:hover ~ .radio-label,
+.radio-label:hover ~ .radio-input:checked ~ .radio-label {
+	color: darkgoldenrod;
+}
+
+.reviews-summary .average-rating {
+	position: relative;
+	appearance: none;
+	color: transparent;
+	width: auto;
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+.reviews-summary .radio-label {
+    font-size: 0;
+    color: rgba(0, 0, 0, 0.2);
+    transition: color 0.1s ease-in-out;
+}
+
+.reviews-summary .radio-label:before {
+    content: "★";
+    display: inline-block;
+    font-size: 32px;
+    color: #ffc700;
+}
+
+.opinions .average-rating {
+	position: relative;
+	appearance: none;
+	color: transparent;
+	width: auto;
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+.opinions .radio-label {
+	cursor: pointer;
+    font-size: 0;
+    color: rgba(0, 0, 0, 0.2);
+    transition: color 0.1s ease-in-out;
+}
+
+.opinions .radio-label:before {
+    content: "★";
+    display: inline-block;
+    font-size: 20px;
+    color: #ffc700;
+}
+
+.opinion {
+	max-width: 50%;
+    margin: auto 0 auto 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.cart button, .wishlist button {
+    width: 120px;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cart button {
+    background-color: #ff8c00; 
+    border: 2px solid #ff8c00; 
+}
+
+.cart button:hover {
+    background-color: #ff751a;
+}
+
+.wishlist button {
+    background-color: #87CEEB;
+    border: 2px solid #87CEEB; 
+	margin-top: 10px; 
+}
+
+.wishlist button:hover {
+    background-color: #5a96b5; 
+}
