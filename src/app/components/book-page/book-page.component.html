@@ -16,8 +16,8 @@
         <div class="price">
             <div class="price">{{book.price}} lei</div>
             <div class="stock">
-                <p *ngIf="book.quantity">In stock</p>
-                <p *ngIf="!book.quantity">In stock</p>
+                <p class="in-stock" *ngIf="book.quantity != 0">In stock</p>
+                <p class="out-of-stock" *ngIf="book.quantity == 0">Out of stock</p>
             </div>
             <div class="cart">
                 <button>Add to cart</button>

@@ -2,16 +2,34 @@
     display: flex;
     justify-content: center; 
     align-items: center; 
+	margin-top: 2rem;
 }
 
 img {
-    width: 50%;
+    width: 40%;
 }
 
 .details {
-    width: 25%;
+    width: 35%;
     box-sizing: border-box; 
     padding: 0 20px;
+    text-align: left;
+}
+
+.details .title {
+    font-size: 1.5em; 
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.details .author {
+    font-style: italic; 
+    color: #555; 
+    margin-bottom: 10px; 
+}
+
+.details .description {
+    line-height: 1.5; 
 }
 
 .price {
@@ -19,6 +37,25 @@ img {
     box-sizing: border-box; 
     padding: 0 20px; 
     align-items: center; 
+    text-align: center; 
+}
+
+.price .price {
+    font-size: 1.2em; 
+    font-weight: bold;
+    margin-bottom: 10px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.price .in-stock {
+    font-style: italic;
+    color: #007700;
+}
+
+.price .out-of-stock {
+    font-style: italic;
+    color: #FF0000;
 }
 
 .reviews {
