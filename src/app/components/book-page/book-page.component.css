@@ -21,6 +21,20 @@ img {
     align-items: center; 
 }
 
+.reviews {
+	margin-left: 5rem;
+	margin-top: 3rem;
+	display: flex;
+}
+
+.reviews-summary {
+	width: 40%;
+}
+
+.opinions {
+	width: 60%;
+}
+
 .star-rating {
 	display: flex;
 	flex-direction: row-reverse;
@@ -85,4 +99,35 @@ img {
     color: #ffc700;
 }
 
-  
+.opinions .average-rating {
+	position: relative;
+	appearance: none;
+	color: transparent;
+	width: auto;
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+.opinions .radio-label {
+	cursor: pointer;
+    font-size: 0;
+    color: rgba(0, 0, 0, 0.2);
+    transition: color 0.1s ease-in-out;
+}
+
+.opinions .radio-label:before {
+    content: "★";
+    display: inline-block;
+    font-size: 20px;
+    color: #ffc700;
+}
+
+.opinion {
+	max-width: 50%;
+    margin: auto 0 auto 0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}

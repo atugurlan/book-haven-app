@@ -47,8 +47,11 @@
 
     <div class="reviews">
         <div class="reviews-summary">
-            Product rating: {{stars_average}} out of 5
-            <meter min="0" max="5" value="{{stars_average}}"></meter>
+            <h2>Reviews summary</h2>
+            <div>
+                Product rating: {{stars_average}} out of 5
+                <meter min="0" max="5" value="{{stars_average}}"></meter>
+            </div>
         
             <div>
                 <div>
@@ -85,6 +88,19 @@
                     <label class="radio-label"></label>
                     {{stars_percentage[0]}}%
                 </div>
+            </div>
+        </div>
+        <div class="opinions">
+            <h2>User Opinions</h2>
+
+            <div *ngFor="let review of reviews" class="opinion">
+              <div class="user">{{ review.name }}</div>
+
+              <div class="stars">
+                <label *ngFor="let _ of [].constructor(review.stars); let i = index" class="radio-label"></label>
+              </div>              
+
+              <div class="comment">{{ review.review }}</div>
             </div>
         </div>
     </div>
