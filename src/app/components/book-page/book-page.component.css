@@ -131,3 +131,31 @@ img {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: relative;
 }
+
+.cart button, .wishlist button {
+    width: 120px;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cart button {
+    background-color: #ff8c00; 
+    border: 2px solid #ff8c00; 
+}
+
+.cart button:hover {
+    background-color: #ff751a;
+}
+
+.wishlist button {
+    background-color: #87CEEB;
+    border: 2px solid #87CEEB; 
+	margin-top: 10px; 
+}
+
+.wishlist button:hover {
+    background-color: #5a96b5; 
+}
