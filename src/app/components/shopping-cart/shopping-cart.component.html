@@ -1,0 +1,26 @@
+<div *ngIf="this.cart && this.cart.items">
+    <ul>
+        <li *ngFor="let cartItem of this.cart.items">
+            <div>
+                <img [src]="cartItem.book.bookcoverURL" [alt]="cartItem.book.title">
+            </div>
+
+            <div>
+                <button class="remove-button" (click)="removeFromCart(cartItem)">Remove</button>
+            </div>
+
+            <br>
+        </li>
+    </ul>
+</div>
+
+<div class="checkout">
+    <div class="total-price" *ngIf="this.cart.items.length!=0">
+        <p>Total price: </p>
+        {{this.cart.totalPrice | currency}} 
+    </div>
+
+    <p *ngIf="this.cart.items.length==0">Shopping cart is empty</p>
+
+    <!-- <button *ngIf="this.cart.items.length != 0" routerLink="/order-success" (click)="addOrder()">Go to checkout</button> -->
+</div>
