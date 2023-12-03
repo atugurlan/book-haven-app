@@ -7,7 +7,7 @@
     
     <ng-container *ngIf="user$ | async as user; else registrationButtons">
         <div class="button-container">
-            <div class="dropdown">
+            <div *ngIf="user.isAdmin==false" class="dropdown">
                 <button class="dropdown-button">
                     {{user.firstName}} {{user.lastName}}
                 </button>
@@ -15,6 +15,17 @@
                     <button>Order</button>
                     <button>Wishlist</button>
                     <button>Cart</button>
+                    <button (click)="logout()">Logout</button>
+                </div>
+            </div>
+
+            <div *ngIf="user.isAdmin==true" class="dropdown">
+                <button class="dropdown-button">
+                    Admin
+                </button>
+                <div class="dropdown-content">
+                    <button>Managa Orders</button>
+                    <button>Edit items</button>
                     <button (click)="logout()">Logout</button>
                 </div>
             </div>
