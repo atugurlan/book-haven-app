@@ -25,6 +25,7 @@ import { provideHotToastConfig } from '@ngneat/hot-toast';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './components/home/home.component';
 import { BookPageComponent } from './components/book-page/book-page.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { BookPageComponent } from './components/book-page/book-page.component';
     LoginComponent,
     SignUpComponent,
     HomeComponent,
-    BookPageComponent
+    BookPageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

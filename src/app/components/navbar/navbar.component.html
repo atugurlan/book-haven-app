@@ -1,0 +1,41 @@
+<div class="toolbar">
+    <div>
+        <a routerLink="/">
+            <img src="assets/logo.png" alt="Logo" style="width: 150px; height: auto;">
+        </a>
+    </div>
+    
+    <ng-container *ngIf="user$ | async as user; else registrationButtons">
+        <div class="button-container">
+            <div *ngIf="user.isAdmin==false" class="dropdown">
+                <button class="dropdown-button">
+                    {{user.firstName}} {{user.lastName}}
+                </button>
+                <div class="dropdown-content">
+                    <button>Order</button>
+                    <button>Wishlist</button>
+                    <button>Cart</button>
+                    <button (click)="logout()">Logout</button>
+                </div>
+            </div>
+
+            <div *ngIf="user.isAdmin==true" class="dropdown">
+                <button class="dropdown-button">
+                    Admin
+                </button>
+                <div class="dropdown-content">
+                    <button>Managa Orders</button>
+                    <button>Edit items</button>
+                    <button (click)="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    
+    <ng-template #registrationButtons>
+        <div class="button-container">
+            <button routerLink="/login">Login</button>
+            <button routerLink="/signup">Sign up</button>
+        </div>
+    </ng-template>
+</div>

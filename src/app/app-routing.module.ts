@@ -7,7 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { BookPageComponent } from './components/book-page/book-page.component';
 
 // const redirectToLogin = () => redirectUnauthorizedTo(['login']);
-// const redirectToLanding = () => redirectLoggedInTo(['landing']);
+// const redirectToHome = () => redirectLoggedInTo(['']);
 
 const routes: Routes = [
   {
