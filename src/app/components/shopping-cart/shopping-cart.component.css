@@ -131,4 +131,5 @@ ul .remove-button:hover{
     padding: 1rem;
     border-radius: 10rem;
     outline: none;
+    cursor: pointer;
 }

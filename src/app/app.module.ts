@@ -27,6 +27,7 @@ import { HomeComponent } from './components/home/home.component';
 import { BookPageComponent } from './components/book-page/book-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { SuccessComponent } from './components/success/success.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     HomeComponent,
     BookPageComponent,
     NavbarComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,

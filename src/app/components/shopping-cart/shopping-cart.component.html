@@ -47,7 +47,7 @@
 
         <p *ngIf="this.cart.items.length==0">Shopping cart is empty</p>
 
-        <button *ngIf="this.cart.items.length != 0" routerLink="/success">Go to checkout</button>
+        <button *ngIf="this.cart.items.length != 0" routerLink="/success" (click)="addOrder()">Go to checkout</button>
     </div>
 
 </div>

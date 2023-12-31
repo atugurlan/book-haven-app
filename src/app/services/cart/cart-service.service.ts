@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { Cart } from 'src/app/models/cart';
 import { Firestore, addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from '@angular/fire/firestore';
 import { setDoc } from '@firebase/firestore';
-import { Observable, from } from 'rxjs';
-import { UserProfile } from '@angular/fire/auth';
 import { CartItem } from 'src/app/models/cart-item';
 import { UsersService } from '../users/users.service';
-import { DocumentReference, DocumentData } from '@angular/fire/firestore';
+import { ProfileUser } from 'src/app/models/user-profile';
+import { Order } from 'src/app/models/order';
 
 @Injectable({
   providedIn: 'root'
@@ -124,5 +123,17 @@ export class CartService {
     console.log('Compute new price' + totalPrice);
     
     return { items, totalPrice };
+  }
+
+  async clearShoppingCart(userId: string): Promise<void> {
+    const cartCollection = collection(this.firestore, `shopping-cart/${userId}/items`);
+    const querySnapshot = await getDocs(cartCollection);
+    
+    querySnapshot.forEach(async (doc) => {
+      const docRef = doc.ref;
+      await deleteDoc(docRef);
+    });
+  
+    console.log('Shopping cart cleared.');
   }
 }
