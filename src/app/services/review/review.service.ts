@@ -66,7 +66,7 @@ export class ReviewService {
     const countStars = [0, 0, 0, 0, 0];
     reviews.forEach((review) => {
       if(review.stars)
-        countStars[review.stars]++;
+        countStars[review.stars - 1]++;
     });
     
     const percentages = countStars.map((count) => count/reviews.length * 100);

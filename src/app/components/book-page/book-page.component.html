@@ -20,7 +20,7 @@
                 <p class="out-of-stock" *ngIf="book.quantity == 0">Out of stock</p>
             </div>
             <div class="cart">
-                <button (click)="addToCart(book)">Add to cart</button>
+                <button *ngIf="book.quantity != 0" (click)="addToCart(book)">Add to cart</button>
             </div>
             <div class="wishlist">
                 <button>Wishlist</button>
