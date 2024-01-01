@@ -24,7 +24,7 @@
                 </div>
                 
                 <div class="warning-container">
-                    <div class="warning" *ngIf="cartItem.quantity == cartItem.book.quantity">
+                    <div class="warning" *ngIf="maximumQuantity(cartItem)">
                         <p>Maximum quantity</p>
                     </div>
                 </div>
