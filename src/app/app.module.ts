@@ -26,6 +26,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './components/home/home.component';
 import { BookPageComponent } from './components/book-page/book-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { SuccessComponent } from './components/success/success.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     SignUpComponent,
     HomeComponent,
     BookPageComponent,
-    NavbarComponent
+    NavbarComponent,
+    ShoppingCartComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,

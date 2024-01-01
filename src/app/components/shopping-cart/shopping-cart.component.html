@@ -1,0 +1,53 @@
+<div class="container" *ngIf="this.cart && this.cart.items">
+    <ul *ngIf="this.cart.items.length != 0">
+        <li *ngFor="let cartItem of this.cart.items">
+            <div>
+                <img [src]="cartItem.book.bookcoverURL" [alt]="cartItem.book.title">
+            </div>
+
+            <div class="title">
+                <span><p>{{cartItem.book.title}}</p></span>
+                <span><p>by {{cartItem.book.author}}</p></span>
+            </div>
+
+            <div class="buttons">
+                <div class="display-price">
+                    <span class="price">{{cartItem.book.price | currency: 'RON '}}</span>
+                </div>
+
+                <div class="quantity-control">
+                    <button class="quantity-button" (click)="decreaseQuantity(cartItem)" [disabled]="cartItem.quantity == 1">-</button>
+                    <div class="quantity-display-container">
+                        <span class="quantity-display">{{ cartItem.quantity }}</span>
+                    </div>
+                    <button class="quantity-button" (click)="increaseQuantity(cartItem)" [disabled]="disableIncreaseButton(cartItem)">+</button>
+                </div>
+                
+                <div class="warning-container">
+                    <div class="warning" *ngIf="checkMaxQuantity(cartItem)">
+                        <p>Maximum quantity</p>
+                    </div>
+                </div>
+                
+    
+                <div>
+                    <button class="remove-button" (click)="removeFromCart(cartItem)">Remove</button>
+                </div>
+            </div>
+
+            <br>
+        </li>
+    </ul>
+
+    <div class="checkout">
+        <div class="total-price" *ngIf="this.cart.items.length!=0">
+            <p>Total price: </p>
+            {{this.cart.totalPrice | currency: 'RON '}} 
+        </div>
+
+        <p *ngIf="this.cart.items.length==0">Shopping cart is empty</p>
+
+        <button *ngIf="this.cart.items.length != 0" routerLink="/success" (click)="addOrder()">Go to checkout</button>
+    </div>
+
+</div>
