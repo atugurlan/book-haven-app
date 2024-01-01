@@ -35,14 +35,15 @@ export class OrderService {
 
   async addOrder(user:ProfileUser, cart:Cart) {
     let currentUser = user;
-    const orders:Order[] = [];
+    let orders:Order[] = [];
 
-    await this.getAllOrders();
+    orders = await this.getAllOrders();
 
     let maxId = parseInt(orders.length.toString(), 10) + 1;
+    console.log(maxId)
     let cartItems = cart.items.map((item) => `${item.quantity} x ${item.book.title}`).join(', ');
     const order = {
-      id: maxId,
+      id: maxId + 1,
       customer: currentUser.uid,
       cart: cartItems,
       price: cart.totalPrice,
