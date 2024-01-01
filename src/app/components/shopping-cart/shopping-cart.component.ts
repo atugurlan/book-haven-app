@@ -58,6 +58,9 @@ export class ShoppingCartComponent implements OnInit {
       const book = this.books.find((b) => b.bid === cartItem.book.bid) || null;
 
       if (book) {
+        if(book.quantity == 0) {
+          await this.removeFromCart(cartItem)
+        }
         if (cartItem.quantity > book.quantity) {
           console.log(`Updating quantity for book ${book.bid}`);
           cartItem.quantity = book.quantity;

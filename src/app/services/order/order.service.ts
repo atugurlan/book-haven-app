@@ -5,6 +5,7 @@ import { from } from 'rxjs';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { Order } from 'src/app/models/order';
 import { CartService } from '../cart/cart-service.service';
+import { BookService } from '../book/book.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ import { CartService } from '../cart/cart-service.service';
 export class OrderService {
 
   constructor(private firestore: Firestore,
-              private cartService: CartService) { }
+              private cartService: CartService,
+              private bookService: BookService) { }
 
   async getAllOrders():Promise<Order[]> {
     const orders:Order[] = [];
@@ -40,7 +42,6 @@ export class OrderService {
     orders = await this.getAllOrders();
 
     let maxId = parseInt(orders.length.toString(), 10);
-    console.log(maxId)
     let cartItems = cart.items.map((item) => `${item.quantity} x ${item.book.title}`).join(', ');
     const order = {
       id: maxId + 1,
@@ -50,6 +51,8 @@ export class OrderService {
       status: 'new'
     };
     const ref = doc(this.firestore, 'orders', order.id.toString());
+
+    this.bookService.refreshBooksQuantities(cart)
   
     from(setDoc(ref, order)).subscribe(async () => {
       await this.cartService.clearShoppingCart(user.uid);
