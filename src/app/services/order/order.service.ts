@@ -39,7 +39,7 @@ export class OrderService {
 
     orders = await this.getAllOrders();
 
-    let maxId = parseInt(orders.length.toString(), 10) + 1;
+    let maxId = parseInt(orders.length.toString(), 10);
     console.log(maxId)
     let cartItems = cart.items.map((item) => `${item.quantity} x ${item.book.title}`).join(', ');
     const order = {
