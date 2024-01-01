@@ -20,11 +20,11 @@
                     <div class="quantity-display-container">
                         <span class="quantity-display">{{ cartItem.quantity }}</span>
                     </div>
-                    <button class="quantity-button" (click)="increaseQuantity(cartItem)" [disabled]="cartItem.quantity == cartItem.book.quantity">+</button>
+                    <button class="quantity-button" (click)="increaseQuantity(cartItem)" [disabled]="disableIncreaseButton(cartItem)">+</button>
                 </div>
                 
                 <div class="warning-container">
-                    <div class="warning" *ngIf="maximumQuantity(cartItem)">
+                    <div class="warning" *ngIf="checkMaxQuantity(cartItem)">
                         <p>Maximum quantity</p>
                     </div>
                 </div>
