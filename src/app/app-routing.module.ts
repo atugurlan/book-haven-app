@@ -44,6 +44,10 @@ const routes: Routes = [
     path: 'wishlist',
     component: WishlistComponent,
     ...canActivate(redirectToLogin)
+  },
+  {
+    path: 'search/:searchTerm', 
+    component: HomeComponent
   }
 ];
 

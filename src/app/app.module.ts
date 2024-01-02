@@ -23,12 +23,16 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { HotToastModule, HotToastService } from '@ngneat/hot-toast';
 import { provideHotToastConfig } from '@ngneat/hot-toast';
 import { ToastrModule } from 'ngx-toastr';
+
+import { FormsModule } from '@angular/forms';
+
 import { HomeComponent } from './components/home/home.component';
 import { BookPageComponent } from './components/book-page/book-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { SuccessComponent } from './components/success/success.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
@@ -41,7 +45,8 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     NavbarComponent,
     ShoppingCartComponent,
     SuccessComponent,
-    WishlistComponent
+    WishlistComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,8 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
       positionClass: 'toast-top-full-width', // Configures the position of the toast
       preventDuplicates: true, // Prevents duplicate toasts from being shown
       closeButton: true // Show close button on toast notifications
-    })
+    }),
+    FormsModule
   ],
   providers: [
     AuthenticationService, 
