@@ -23,7 +23,7 @@
                 <button *ngIf="book.quantity != 0" (click)="addToCart(book)">Add to cart</button>
             </div>
             <div class="wishlist">
-                <button>Wishlist</button>
+                <button (click)="addToWishlist(book)">Wishlist</button>
             </div>
         </div>
     </div>

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Book } from 'src/app/models/book';
-import { Firestore, collection, doc, getDocs, updateDoc } from '@angular/fire/firestore';
+import { Firestore, collection, doc, getDocs, setDoc, updateDoc } from '@angular/fire/firestore';
 import { Cart } from 'src/app/models/cart';
+import { ProfileUser } from 'src/app/models/user-profile';
+import { CartItem } from 'src/app/models/cart-item';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +61,28 @@ export class BookService {
       );
     } catch (error) {
       console.error("Error updating book quantities:", error);
+    }
+  }
+
+  async addBookTo(user: ProfileUser, book:Book, location:string) {
+    try {
+      let item: Book | CartItem
+      if(location === 'shopping-cart') {
+        item = {
+          book: book,
+          price: book.price,
+          quantity: 1
+        }
+      }
+      else {
+        item = book
+      }
+
+      const cartDoc = doc(this.firestore,`${location}/${user.uid}/items/${book.bid}`);
+      await setDoc(cartDoc, item);
+      console.log(`Book item added to the ${location} successfully!`);
+    }catch (error) {
+      console.error(`Error adding book item to the ${location}:`, error);
     }
   }
 

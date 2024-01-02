@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { BookPageComponent } from './components/book-page/book-page.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { SuccessComponent } from './components/success/success.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['']);
@@ -37,6 +38,11 @@ const routes: Routes = [
   {
     path: 'success',
     component: SuccessComponent,
+    ...canActivate(redirectToLogin)
+  },
+  {
+    path: 'wishlist',
+    component: WishlistComponent,
     ...canActivate(redirectToLogin)
   }
 ];

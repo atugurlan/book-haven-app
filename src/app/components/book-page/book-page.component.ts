@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Firestore, doc, setDoc } from '@angular/fire/firestore';
+import { Firestore, collection, doc, setDoc } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/models/book';
 import { CartItem } from 'src/app/models/cart-item';
@@ -47,23 +47,19 @@ export class BookPageComponent {
   }
 
   async addToCart(book:Book) {
-    let currentUser: ProfileUser | null = null;
-
     this.user$.subscribe(async (user) => {
       if (user) {
-        try {
-          currentUser = user;
-          const cartItem: CartItem = {
-            book: book,
-            price: book.price,
-            quantity: 1
-          }
-          const cartDoc = doc(this.firestore,`shopping-cart/${user.uid}/items/${book.bid}`);
-          await setDoc(cartDoc, cartItem);
-          console.log('Book item added to the cart successfully!');
-        }catch (error) {
-          console.error('Error adding book item to the cart:', error);
-        }
+        await this.bookService.addBookTo(user, book, 'shopping-cart')
+      } else {
+        console.error('User data not available.');
+      }
+    });
+  }
+
+  async addToWishlist(book:Book) {
+    this.user$.subscribe(async (user) => {
+      if (user) {
+        await this.bookService.addBookTo(user, book, 'wishlist')
       } else {
         console.error('User data not available.');
       }

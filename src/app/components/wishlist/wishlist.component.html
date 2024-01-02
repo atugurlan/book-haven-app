@@ -1,0 +1,8 @@
+<h2>Wishlist</h2>
+<ul>
+  <li *ngFor="let book of wishlist">
+    {{ book.title }}
+
+    <button (click)="addToCart(book)">Add to cart</button>
+  </li>
+</ul>
