@@ -1,8 +1,37 @@
 <h2>Wishlist</h2>
-<ul>
-  <li *ngFor="let book of wishlist">
-    {{ book.title }}
 
-    <button (click)="addToCart(book)">Add to cart</button>
+<ul>
+  <li *ngFor="let book of this.wishlist">
+    <div class="left-side">
+      <div>
+        <img [src]="book.bookcoverURL" [alt]="book.title">
+      </div>
+  
+      <div class="title">
+        <span><p>{{book.title}}</p></span>
+        <span><p>by {{book.author}}</p></span>
+      </div>
+    </div>
+
+    <div class="right-side">
+      <div class="available">
+        <p *ngIf="checkAvailability(book)">Book available</p>
+        <p *ngIf="!checkAvailability(book)">Out of stock</p>
+      </div>
+      <div class="display-price">
+        <span class="price">{{book.price | currency: 'RON '}}</span>
+      </div>
+  
+      <div>
+        <button *ngIf="checkAvailability(book)" class="add-button" (click)="addToCart(book)">Add to Cart</button>
+      </div>
+
+      <div>
+        <button class="remove" (click)="removeFromWishlist(book)">Remove</button>
+      </div>
+    </div>
+
+    <br>
+
   </li>
 </ul>

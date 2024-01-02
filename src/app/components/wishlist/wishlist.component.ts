@@ -11,6 +11,7 @@ import { WishlistService } from 'src/app/services/wishlist/wishlist.service';
 })
 export class WishlistComponent implements OnInit {
   wishlist!: Book[];
+  books!: Book[];
   user$ = this.usersService.currentUserProfile$;
 
   constructor(private wishlistService: WishlistService,
@@ -36,4 +37,29 @@ export class WishlistComponent implements OnInit {
       }
     });
   }
+
+  async removeFromWishlist(book:Book) {
+    this.user$.subscribe(async (user) => {
+      if (user) {
+        this.wishlist = await this.wishlistService.removeFromWishlist(book.bid)
+        this.setWishlist()
+      } else {
+        console.error('User data not available.');
+      }
+    });
+  }
+
+  async checkAvailability(wish_book:Book):Promise<boolean> {
+    this.books = await this.bookService.allBooks()
+    const book = this.books.find((b) => b.bid === wish_book.bid) || null;
+
+    if (book) {
+      if(book.quantity == 0) {
+        return false
+      }
+    }
+
+    return true
+  }
+
 }
