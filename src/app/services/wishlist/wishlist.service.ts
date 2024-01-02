@@ -37,8 +37,8 @@ export class WishlistService {
     return new Promise<Book[]>((resolve, reject) => {
       this.user$.subscribe(async (user) => {
         if (user) {
-          const cartCollection = collection(this.firestore, `wishlist/${user.uid}/items`);
-          const querySnapshot = await getDocs(cartCollection);
+          const wishlistCollection = collection(this.firestore, `wishlist/${user.uid}/items`);
+          const querySnapshot = await getDocs(wishlistCollection);
       
           querySnapshot.forEach(async (doc) => {
             const book = doc.data() as Book;

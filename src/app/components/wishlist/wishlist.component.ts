@@ -39,14 +39,8 @@ export class WishlistComponent implements OnInit {
   }
 
   async removeFromWishlist(book:Book) {
-    this.user$.subscribe(async (user) => {
-      if (user) {
-        this.wishlist = await this.wishlistService.removeFromWishlist(book.bid)
-        this.setWishlist()
-      } else {
-        console.error('User data not available.');
-      }
-    });
+    this.wishlist = await this.wishlistService.removeFromWishlist(book.bid)
+    this.setWishlist()
   }
 
   async checkAvailability(wish_book:Book):Promise<boolean> {
