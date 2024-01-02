@@ -36,6 +36,15 @@ export class BookService {
     return books;
   }
 
+  async getAllBooksBySearchTerm(searchTerm:string):Promise<Book[]> {
+    const books = await this.allBooks();
+
+    const filtered_books = books.filter(book => 
+            book.title.toLowerCase().includes(searchTerm.toLowerCase()));
+
+    return filtered_books;
+  }
+
   async getBookByBID(bid:string):Promise<Book | undefined> {
     const books = await this.allBooks();
     return books.find(book => book.bid == bid);
