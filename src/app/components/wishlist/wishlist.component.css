@@ -1,0 +1,77 @@
+h2 {
+    display: flex;
+    align-items: center;
+    margin-left: 50%;
+}
+
+ul {
+    list-style: none;
+    padding: 0.5rem;
+    margin-right: 3rem;
+    margin-left: 1rem;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+	margin-top: 2rem;
+}
+  
+li {
+    display: flex;
+    align-items: center;
+    padding: 2rem 1rem;
+    border-bottom: 1px solid #ccc;
+}
+  
+img {
+    width: 12rem;
+    height: 12rem;
+    object-fit: cover;
+}
+
+.left-side {
+    padding-right: 30rem;
+    border-right: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+}
+  
+.right-side {
+    padding-left: 2rem;
+}
+
+ul .display-price {
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+ul .remove {
+    border-radius: 1rem;
+    border: none;
+    padding: 0.5rem;
+    color: blue;
+    opacity: .7;
+    outline: none;
+    float: right;
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+}
+
+ul .remove:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+ul .add-button{
+    border-radius: 1rem;
+    border: none;
+    padding: 0.5rem;
+    color: blue;
+    opacity: .7;
+    outline: none;
+    margin-right: 1rem;
+}
+
+ul .add-button:hover{
+    opacity: 1;
+    cursor: pointer;
+}

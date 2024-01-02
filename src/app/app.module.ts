@@ -28,6 +28,7 @@ import { BookPageComponent } from './components/book-page/book-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { SuccessComponent } from './components/success/success.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { SuccessComponent } from './components/success/success.component';
     BookPageComponent,
     NavbarComponent,
     ShoppingCartComponent,
-    SuccessComponent
+    SuccessComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,
