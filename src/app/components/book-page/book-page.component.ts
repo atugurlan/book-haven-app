@@ -42,6 +42,7 @@ export class BookPageComponent {
           this.stars_average = await this.reviewService.averageStar(reviews);
           this.stars_percentage = await this.reviewService.percentageStar(reviews);
           this.reviewSubmitted = this.hasSubmittedReview()
+          console.log(this.reviewSubmitted)
         }
         else {
           console.error("Book with bid ${params['id']} not found")

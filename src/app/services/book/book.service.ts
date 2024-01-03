@@ -95,4 +95,43 @@ export class BookService {
     }
   }
 
+  async countGenres(): Promise<{ name: string; count: number }[]> {
+    const books = await this.allBooks();
+    
+    const tagsCountsMap: { [key: string]: number } = {
+      'All': books.length,
+      'Fiction': 0,
+      'Non-fiction': 0,
+      'Thriller': 0,
+      'Romance': 0,
+      'Fantasy': 0,
+      'Biography': 0,
+      'History': 0,
+      'Horror': 0,
+      'Poetry': 0,
+      'CookBooks': 0
+    }
+
+    books.forEach( (book) => {
+      const genre = book.genre;
+      if(genre) {
+        tagsCountsMap[genre] += 1;
+      }
+    })
+  
+    const tagsCount: { name: string; count: number }[] = Object.entries(tagsCountsMap).map(
+      ([name, count]) => ({ name, count })
+    );
+  
+    return tagsCount;
+  }
+
+  async getBooksByGenre(genre:string):Promise<Book[]> {
+    const books = await this.allBooks();
+
+    return genre=="All" ? 
+            books :
+            books.filter(book => book.genre?.includes(genre));
+  }
+
 }
