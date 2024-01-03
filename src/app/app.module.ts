@@ -33,6 +33,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { SuccessComponent } from './components/success/success.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { SearchComponent } from './components/search/search.component';
+import { TagsComponent } from './components/tags/tags.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { SearchComponent } from './components/search/search.component';
     ShoppingCartComponent,
     SuccessComponent,
     WishlistComponent,
-    SearchComponent
+    SearchComponent,
+    TagsComponent
   ],
   imports: [
     BrowserModule,
