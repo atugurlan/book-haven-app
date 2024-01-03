@@ -20,6 +20,9 @@ export class BookPageComponent {
   stars_average!:number;
   stars_percentage!:number[];
   user$ = this.usersService.currentUserProfile$;
+  reviewMessage: string = '';
+  selectedStarRating: number | null= null;
+  reviewSubmitted!: boolean
 
   constructor(private activatedRoute: ActivatedRoute,
               private bookService: BookService,
@@ -38,6 +41,7 @@ export class BookPageComponent {
           this.reviews = reviews;
           this.stars_average = await this.reviewService.averageStar(reviews);
           this.stars_percentage = await this.reviewService.percentageStar(reviews);
+          this.reviewSubmitted = this.hasSubmittedReview()
         }
         else {
           console.error("Book with bid ${params['id']} not found")
@@ -66,5 +70,46 @@ export class BookPageComponent {
     });
   }
 
+  hasSubmittedReview() {
+    this.user$.subscribe(async (user) => {
+      if (user) {
+        return this.reviews.some((review) => review.uid === user.uid);
+      } else {
+        console.error('User data not available.');
+        return false
+      }
+    });
+    return false
+  }
+
+  async addReview() {
+    if (this.selectedStarRating !== null && this.reviewMessage.trim() !== '') {
+      this.user$.subscribe(async (user) => {
+        if (user && user.firstName && user.lastName) {
+          let all_reviews = await this.reviewService.allReviews()
+          let id = all_reviews.length + 1
+          let review = {
+            rid: id.toString(),
+            bid: this.book.bid,
+            name: user.firstName + ' ' + user.lastName[0],
+            uid: user.uid,
+            review: this.reviewMessage,
+            stars: this.selectedStarRating || undefined
+          }
+          this.reviewService.addReview(review)
+  
+          this.reviews = await this.reviewService.allReviewsForBook(this.book.bid);
+          console.log(`Added review with ${this.selectedStarRating} stars and message: ${this.reviewMessage}`);
+          
+          this.selectedStarRating = null;
+          this.reviewMessage = '';
+        } else {
+          console.error('User data not available.');
+        }
+      });
+    } else {
+      console.error('Star rating and review message are required.');
+    }
+  }
 
 }

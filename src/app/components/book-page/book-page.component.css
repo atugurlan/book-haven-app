@@ -145,14 +145,14 @@ img {
 	vertical-align: baseline;
 }
 
-.opinions .radio-label {
+.opinions .opinion .radio-label {
 	cursor: pointer;
     font-size: 0;
     color: rgba(0, 0, 0, 0.2);
     transition: color 0.1s ease-in-out;
 }
 
-.opinions .radio-label:before {
+.opinions .opinion .radio-label:before {
     content: "★";
     display: inline-block;
     font-size: 20px;
