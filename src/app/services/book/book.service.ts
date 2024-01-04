@@ -4,6 +4,7 @@ import { Firestore, collection, doc, getDocs, setDoc, updateDoc } from '@angular
 import { Cart } from 'src/app/models/cart';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { CartItem } from 'src/app/models/cart-item';
+import { Observable, from } from 'rxjs';
 import { WishlistItem } from 'src/app/models/wishlist-item';
 
 @Injectable({
@@ -13,6 +14,42 @@ export class BookService {
   book!:Book;
 
   constructor(private firestore: Firestore) { }
+
+  setBook(book: any) {
+    this.book = book;
+  }
+
+  async getBook() {
+    return this.book;
+  }
+
+  addBook(book: Book): Observable<any> {
+    const ref = doc(this.firestore, 'books', book?.bid.toString());
+    return from(setDoc(ref, book));
+  }
+
+  updateBook(book: Book): Observable<any> {
+    const ref = doc(this.firestore, 'books', book?.bid.toString());
+    return from(updateDoc(ref, { ...book }));
+  }
+
+  async getNumberOfBooks(): Promise<number> {
+    let books: Book[] = [];
+    books = await this.allBooks();
+
+    return books.length;
+  }
+
+  async getLastBook(): Promise<Book> {
+    let books: Book[] = [];
+    books = await this.allBooks();
+
+    if (books.length > 0) {
+      return books[books.length - 1];
+    } else {
+      throw new Error("No book found");
+    }
+  }
 
   async allBooks():Promise<Book[]> {
     const books:Book[] = [];
