@@ -102,6 +102,7 @@ export class BookService {
       'All': books.length,
       'Fiction': 0,
       'Non-fiction': 0,
+      'Mistery': 0,
       'Thriller': 0,
       'Romance': 0,
       'Fantasy': 0,
@@ -109,7 +110,7 @@ export class BookService {
       'History': 0,
       'Horror': 0,
       'Poetry': 0,
-      'CookBooks': 0
+      'Cookbooks': 0
     }
 
     books.forEach( (book) => {
