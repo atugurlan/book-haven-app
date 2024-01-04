@@ -102,7 +102,7 @@ export class BookService {
       'All': books.length,
       'Fiction': 0,
       'Non-fiction': 0,
-      'Mistery': 0,
+      'Mystery': 0,
       'Thriller': 0,
       'Romance': 0,
       'Fantasy': 0,
