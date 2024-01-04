@@ -41,10 +41,10 @@ export class WishlistComponent implements OnInit {
     this.wishlist = await this.wishlistService.getWishlist();
   }
 
-  addToCart(book: WishlistItem) {
+  async addToCart(book: WishlistItem) {
     console.log('add item to shopping cart')
-    this.bookService.addBookTo(this.userid, book.book, 'shopping-cart')
-    this.removeFromWishlist(book)
+    await this.bookService.addBookTo(this.userid, book.book, 'shopping-cart')
+    await this.removeFromWishlist(book)
   }
 
   async removeFromWishlist(book: WishlistItem) {
