@@ -1,111 +1,48 @@
-<!-- <div class="form-container">
-    <form class="margin-top" [formGroup]="productForm" (ngSubmit)="saveBookDetails()">
-      <div class="form-group">
-        <label for="bid">Book ID:</label>
-        <input id="bid" type="text" matInput formControlName="bid">
-      </div>
-
-      <div class="form-group">
-        <label for="title">Title:</label>
-        <input id="title" type="text" matInput formControlName="title" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="author">Author:</label>
-        <input id="author" type="text" matInput formControlName="author" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="price">Price:</label>
-        <input id="price" type="number" matInput formControlName="price" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="quantity">Quantity:</label>
-        <input id="quantity" type="number" matInput formControlName="quantity" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="genre">Genre:</label>
-        <mat-form-field appearance="fill">
-          <mat-label>Genre:</mat-label>
-          <mat-select formControlName="genre" required>
-            <mat-option *ngFor="let genre of bookGenre" [value]="genre">{{ genre }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-  
-      <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea id="description" matInput formControlName="description" required></textarea>
-      </div>
-  
-      <button type="submit" class="button" mat-raised-button color="primary">Finish</button>
-    </form>
-  </div>
-  
-  <div class="image-upload-container">
-    <div class="image-upload-box">
-      <img class="profile-image" [src]="imageURL || '/assets/images/image-placeholder.jpg'" alt="Book Cover">
-      <label class="upload-button" for="imageInput">Upload Cover</label>
-      <input id="imageInput" type="file" hidden (change)="uploadBookCover($event)">
+<div *ngIf="!bookDetailsSubmitted" class="form-container">
+  <form class="margin-top" [formGroup]="productForm" (ngSubmit)="saveBookDetails()">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input id="title" type="text" matInput formControlName="title" required>
     </div>
-  </div>
-   -->
-
-
-
-   <div *ngIf="!bookDetailsSubmitted" class="form-container">
-    <form class="margin-top" [formGroup]="productForm" (ngSubmit)="saveBookDetails()">
-      <div class="form-group">
-        <label for="bid">Book ID:</label>
-        <input id="bid" type="text" matInput formControlName="bid">
-      </div>
   
-      <div class="form-group">
-        <label for="title">Title:</label>
-        <input id="title" type="text" matInput formControlName="title" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="author">Author:</label>
-        <input id="author" type="text" matInput formControlName="author" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="price">Price:</label>
-        <input id="price" type="number" matInput formControlName="price" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="quantity">Quantity:</label>
-        <input id="quantity" type="number" matInput formControlName="quantity" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="genre">Genre:</label>
-        <mat-form-field appearance="fill">
-          <mat-label>Genre:</mat-label>
-          <mat-select formControlName="genre" required>
-            <mat-option *ngFor="let genre of bookGenre" [value]="genre">{{ genre }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-  
-      <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea id="description" matInput formControlName="description" required></textarea>
-      </div>
-  
-      <button type="submit" class="button" mat-raised-button color="primary">Finish</button>
-    </form>
-  </div>
-  
-  <div *ngIf="bookDetailsSubmitted" class="image-upload-container">
-    <div class="image-upload-box">
-      <img class="profile-image" [src]="imageURL || '/assets/images/image-placeholder.jpg'" alt="Book Cover">
-      <label class="upload-button" for="imageInput">Upload Cover</label>
-      <input id="imageInput" type="file" hidden (change)="uploadBookCover($event)">
+    <div class="form-group">
+      <label for="author">Author:</label>
+      <input id="author" type="text" matInput formControlName="author" required>
     </div>
-  </div>
   
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input id="price" type="number" matInput formControlName="price" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input id="quantity" type="number" matInput formControlName="quantity" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="genre">Genre:</label>
+      <mat-form-field appearance="fill">
+        <mat-label>Genre:</mat-label>
+        <mat-select formControlName="genre" required>
+          <mat-option *ngFor="let genre of bookGenre" [value]="genre">{{ genre }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" matInput formControlName="description" required></textarea>
+    </div>
+  
+    <button type="submit" class="button" mat-raised-button color="primary">Finish</button>
+  </form>
+</div>
+
+<div *ngIf="bookDetailsSubmitted" class="image-upload-container">
+  <div class="image-upload-box">
+    <img class="profile-image" [src]="imageURL || '/assets/images/image-placeholder.jpg'" alt="Book Cover">
+    <label class="upload-button" for="imageInput">Upload Cover</label>
+    <input id="imageInput" type="file" hidden (change)="uploadBookCover($event)">
+  </div>
+</div>  

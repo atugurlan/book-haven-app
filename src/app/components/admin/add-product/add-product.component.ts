@@ -50,20 +50,18 @@ export class AddProductComponent {
   async saveBookDetails() {
     const { bid, title, author, price, quantity, genre, description } = this.productForm.value;
 
-    if (!title) {
-      return;
-    }
+    let newId_int = await this.bookService.getNumberOfBooks() + 1;
+    let newId_string = newId_int.toString()
 
-    if (bid && title && author && price && quantity && genre && description) {
+    if (title && author && price && quantity && genre && description) {
       this.bookService.addBook({
-        bid,
+        bid: newId_string,
         title,
         author,
         price: parseFloat(price),
         quantity: parseFloat(quantity),
         genre,
         description,
-        //id: await this.bookService.getNumberOfBooks() + 1,
         bookcoverURL: ''
       })
       .subscribe(
@@ -78,7 +76,7 @@ export class AddProductComponent {
     this.bookDetailsSubmitted = true;
   }
 
-  async uploadBookCover(event: any): Promise<void> {
+  async uploadBookCover(event: any): Promise<void> {7
     let book = await this.bookService.getLastBook();
     
     this.imageUploadService
@@ -93,15 +91,18 @@ export class AddProductComponent {
             quantity: book.quantity,
             genre: book.genre,
             description: book.description,
-            bookcoverURL: book.bookcoverURL
+            bookcoverURL: photoURL
           })
         )
       )
       .subscribe(
         () => {
+          console.log('Book cover uploaded successfully!');
           this.toastr.success('Cover uploaded successfully!'); 
         },
-        () => {
+        (error) => {
+          console.log('error')
+          console.error('Error uploading book cover:', error);
           this.toastr.error('There was an error in uploading the cover!');
         }
       );
