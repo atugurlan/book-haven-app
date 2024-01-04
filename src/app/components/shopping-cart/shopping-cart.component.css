@@ -94,9 +94,25 @@ ul .remove-button{
     opacity: .7;
     outline: none;
     float: right;
+    margin-bottom: 0.5rem;
 }
 
 ul .remove-button:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+ul .move-to-wishlist-button{
+    border-radius: 1rem;
+    border: none;
+    padding: 0.5rem;
+    color: #007BA7;
+    opacity: .7;
+    outline: none;
+    float: right;
+}
+
+ul .move-to-wishlist-button:hover{
     opacity: 1;
     cursor: pointer;
 }

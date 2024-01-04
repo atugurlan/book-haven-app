@@ -60,4 +60,10 @@ export class OrderService {
         console.error('Error adding order:', error);
     });
   }
+
+  async getAllCustomerOrders(id:string):Promise<Order[]> {
+    const orders = await this.getAllOrders();
+    let customerOrders = orders.filter(order => order.customer == id);
+    return customerOrders;
+  }
 }

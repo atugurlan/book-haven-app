@@ -49,7 +49,9 @@ export class CartService {
 
   async removeFromCart(bookID: string): Promise<Cart> {
     return new Promise<Cart>((resolve, reject) => {
+      console.log('1')
       this.user$.subscribe(async (user) => {
+        console.log('1')
         if (user) {
           const cartCollection = collection(this.firestore, `shopping-cart/${user.uid}/items`);
           const querySnapshot = await getDocs(cartCollection);

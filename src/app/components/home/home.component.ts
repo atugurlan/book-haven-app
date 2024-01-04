@@ -18,9 +18,13 @@ export class HomeComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.route.params.subscribe( async params => {
       const searchTerm = params['searchTerm'];
+      const genreTerm = params['genre']
+      console.log(genreTerm)
 
       if(searchTerm)
         this.books = await this.bookService.getAllBooksBySearchTerm(searchTerm);
+      else if(genreTerm)
+        this.books = await this.bookService.getBooksByGenre(genreTerm)
       else
         this.books =  await this.bookService.allBooks();
     });

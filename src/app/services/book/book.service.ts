@@ -5,6 +5,7 @@ import { Cart } from 'src/app/models/cart';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { CartItem } from 'src/app/models/cart-item';
 import { Observable, from } from 'rxjs';
+import { WishlistItem } from 'src/app/models/wishlist-item';
 
 @Injectable({
   providedIn: 'root'
@@ -110,9 +111,9 @@ export class BookService {
     }
   }
 
-  async addBookTo(user: ProfileUser, book:Book, location:string) {
+  async addBookTo(userId: string, book:Book, location:string) {
     try {
-      let item: Book | CartItem
+      let item: WishlistItem | CartItem
       if(location === 'shopping-cart') {
         item = {
           book: book,
@@ -121,15 +122,57 @@ export class BookService {
         }
       }
       else {
-        item = book
+        item = {
+          book: book
+        }
       }
 
-      const cartDoc = doc(this.firestore,`${location}/${user.uid}/items/${book.bid}`);
+      const cartDoc = doc(this.firestore,`${location}/${userId}/items/${book.bid}`);
       await setDoc(cartDoc, item);
       console.log(`Book item added to the ${location} successfully!`);
     }catch (error) {
       console.error(`Error adding book item to the ${location}:`, error);
     }
+  }
+
+  async countGenres(): Promise<{ name: string; count: number }[]> {
+    const books = await this.allBooks();
+    
+    const tagsCountsMap: { [key: string]: number } = {
+      'All': books.length,
+      'Fiction': 0,
+      'Non-fiction': 0,
+      'Mystery': 0,
+      'Thriller': 0,
+      'Romance': 0,
+      'Fantasy': 0,
+      'Biography': 0,
+      'History': 0,
+      'Horror': 0,
+      'Poetry': 0,
+      'Cookbooks': 0
+    }
+
+    books.forEach( (book) => {
+      const genre = book.genre;
+      if(genre) {
+        tagsCountsMap[genre] += 1;
+      }
+    })
+  
+    const tagsCount: { name: string; count: number }[] = Object.entries(tagsCountsMap).map(
+      ([name, count]) => ({ name, count })
+    );
+  
+    return tagsCount;
+  }
+
+  async getBooksByGenre(genre:string):Promise<Book[]> {
+    const books = await this.allBooks();
+
+    return genre=="All" ? 
+            books :
+            books.filter(book => book.genre?.includes(genre));
   }
 
 }

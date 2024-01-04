@@ -9,6 +9,8 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { SuccessComponent } from './components/success/success.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
+import { PreviousOrdersComponent } from './components/previous-orders/previous-orders.component';
+
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['']);
@@ -47,6 +49,11 @@ const routes: Routes = [
     ...canActivate(redirectToLogin)
   },
   {
+    path: 'my_orders',
+    component: PreviousOrdersComponent,
+    ...canActivate(redirectToLogin)
+  },
+  {
     path: 'search/:searchTerm', 
     component: HomeComponent
   },
@@ -54,6 +61,10 @@ const routes: Routes = [
     path: 'admin/add-product',
     component: AddProductComponent
   },
+  {
+    path: 'genre/:genre',
+    component: HomeComponent
+  }
 ];
 
 @NgModule({
