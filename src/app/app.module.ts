@@ -34,6 +34,7 @@ import { SuccessComponent } from './components/success/success.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { SearchComponent } from './components/search/search.component';
 import { TagsComponent } from './components/tags/tags.component';
+import { PreviousOrdersComponent } from './components/previous-orders/previous-orders.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { TagsComponent } from './components/tags/tags.component';
     SuccessComponent,
     WishlistComponent,
     SearchComponent,
-    TagsComponent
+    TagsComponent,
+    PreviousOrdersComponent
   ],
   imports: [
     BrowserModule,
