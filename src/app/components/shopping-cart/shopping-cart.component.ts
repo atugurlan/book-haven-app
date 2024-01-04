@@ -120,6 +120,18 @@ export class ShoppingCartComponent implements OnInit {
     this.cart = await this.cartService.removeFromCart(cartItem.book.bid);
   }
 
+  async moveToWishlist(cartItem:CartItem) {
+    console.log('here')
+    this.user$.subscribe(async (user) => {
+      if (user) {
+        await this.bookService.addBookTo(user.uid, cartItem.book, 'shopping-cart')
+        await this.removeFromCart(cartItem)
+      } else {
+        console.error('User data not available.');
+      }
+    });
+  }
+
   async updateCart(cartItem:CartItem, quantity:number) {
     this.cart = await this.cartService.changeQuantity(cartItem.book.bid, quantity);
   }

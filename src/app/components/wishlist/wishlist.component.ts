@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription, interval, take } from 'rxjs';
 import { Book } from 'src/app/models/book';
+import { Wishlist } from 'src/app/models/wishlist';
+import { WishlistItem } from 'src/app/models/wishlist-item';
 import { BookService } from 'src/app/services/book/book.service';
 import { UsersService } from 'src/app/services/users/users.service';
 import { WishlistService } from 'src/app/services/wishlist/wishlist.service';
@@ -10,42 +13,48 @@ import { WishlistService } from 'src/app/services/wishlist/wishlist.service';
   styleUrls: ['./wishlist.component.css']
 })
 export class WishlistComponent implements OnInit {
-  wishlist!: Book[];
+  wishlist!: Wishlist;
   books!: Book[];
   user$ = this.usersService.currentUserProfile$;
+  userid!:string;
+  private userSubscription!: Subscription;
 
   constructor(private wishlistService: WishlistService,
               private bookService: BookService,
               private usersService: UsersService) {}
 
   async ngOnInit(): Promise<void> {
+    this.userSubscription = this.user$.subscribe(user => {
+      if(user) {
+        this.userid = user?.uid;
+        console.log(this.userid)
+      }
+    });
     this.wishlist = await this.wishlistService.getWishlist();
+  }
+
+  ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
   }
 
   async setWishlist() {
     this.wishlist = await this.wishlistService.getWishlist();
   }
 
-  async addToCart(book:Book) {
-    this.user$.subscribe(async (user) => {
-      if (user) {
-        await this.bookService.addBookTo(user, book, 'shopping-cart')
-        this.wishlist = await this.wishlistService.removeFromWishlist(book.bid)
-        this.setWishlist()
-      } else {
-        console.error('User data not available.');
-      }
-    });
+  async addToCart(book: WishlistItem) {
+    console.log('add item to shopping cart')
+    await this.bookService.addBookTo(this.userid, book.book, 'shopping-cart')
+    await this.removeFromWishlist(book)
   }
 
-  async removeFromWishlist(book:Book) {
-    this.wishlist = await this.wishlistService.removeFromWishlist(book.bid)
-    this.setWishlist()
+  async removeFromWishlist(book: WishlistItem) {
+    console.log('removed item from wishlist')
+    this.wishlist = await this.wishlistService.removeFromWishlist(this.userid, book.book.bid)
   }
 
-  async checkAvailability(wish_book:Book):Promise<boolean> {
+  async checkAvailability(wish_book:WishlistItem):Promise<boolean> {
     this.books = await this.bookService.allBooks()
-    const book = this.books.find((b) => b.bid === wish_book.bid) || null;
+    const book = this.books.find((b) => b.bid === wish_book.book.bid) || null;
 
     if (book) {
       if(book.quantity == 0) {

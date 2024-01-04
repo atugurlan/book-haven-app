@@ -4,6 +4,7 @@ import { Firestore, collection, doc, getDocs, setDoc, updateDoc } from '@angular
 import { Cart } from 'src/app/models/cart';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { CartItem } from 'src/app/models/cart-item';
+import { WishlistItem } from 'src/app/models/wishlist-item';
 
 @Injectable({
   providedIn: 'root'
@@ -73,9 +74,9 @@ export class BookService {
     }
   }
 
-  async addBookTo(user: ProfileUser, book:Book, location:string) {
+  async addBookTo(userId: string, book:Book, location:string) {
     try {
-      let item: Book | CartItem
+      let item: WishlistItem | CartItem
       if(location === 'shopping-cart') {
         item = {
           book: book,
@@ -84,10 +85,12 @@ export class BookService {
         }
       }
       else {
-        item = book
+        item = {
+          book: book
+        }
       }
 
-      const cartDoc = doc(this.firestore,`${location}/${user.uid}/items/${book.bid}`);
+      const cartDoc = doc(this.firestore,`${location}/${userId}/items/${book.bid}`);
       await setDoc(cartDoc, item);
       console.log(`Book item added to the ${location} successfully!`);
     }catch (error) {
@@ -102,7 +105,7 @@ export class BookService {
       'All': books.length,
       'Fiction': 0,
       'Non-fiction': 0,
-      'Mistery': 0,
+      'Mystery': 0,
       'Thriller': 0,
       'Romance': 0,
       'Fantasy': 0,

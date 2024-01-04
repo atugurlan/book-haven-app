@@ -54,7 +54,7 @@ export class BookPageComponent {
   async addToCart(book:Book) {
     this.user$.subscribe(async (user) => {
       if (user) {
-        await this.bookService.addBookTo(user, book, 'shopping-cart')
+        await this.bookService.addBookTo(user.uid, book, 'shopping-cart')
       } else {
         console.error('User data not available.');
       }
@@ -64,7 +64,7 @@ export class BookPageComponent {
   async addToWishlist(book:Book) {
     this.user$.subscribe(async (user) => {
       if (user) {
-        await this.bookService.addBookTo(user, book, 'wishlist')
+        await this.bookService.addBookTo(user.uid, book, 'wishlist')
       } else {
         console.error('User data not available.');
       }
