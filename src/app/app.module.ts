@@ -26,6 +26,10 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { FormsModule } from '@angular/forms';
 
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+
 import { HomeComponent } from './components/home/home.component';
 import { BookPageComponent } from './components/book-page/book-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -33,6 +37,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { SuccessComponent } from './components/success/success.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { SearchComponent } from './components/search/search.component';
+import { AddProductComponent } from './components/admin/add-product/add-product.component';
 
 
 @NgModule({
@@ -46,7 +51,8 @@ import { SearchComponent } from './components/search/search.component';
     ShoppingCartComponent,
     SuccessComponent,
     WishlistComponent,
-    SearchComponent
+    SearchComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -60,11 +66,16 @@ import { SearchComponent } from './components/search/search.component';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
     HotToastModule.forRoot(),
     ToastrModule.forRoot({
-      positionClass: 'toast-top-full-width', // Configures the position of the toast
-      preventDuplicates: true, // Prevents duplicate toasts from being shown
-      closeButton: true // Show close button on toast notifications
+      positionClass: 'toast-top-full-width',
+      toastClass: 'toast-custom-style'
+      // positionClass: 'toast-top-full-width', // Configures the position of the toast
+      // preventDuplicates: true, // Prevents duplicate toasts from being shown
+      // closeButton: true // Show close button on toast notifications
     }),
     FormsModule
   ],
