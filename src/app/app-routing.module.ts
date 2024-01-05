@@ -8,6 +8,8 @@ import { BookPageComponent } from './components/book-page/book-page.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { SuccessComponent } from './components/success/success.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { DeleteProductComponent } from './components/admin/delete-product/delete-product.component';
+
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectToHome = () => redirectLoggedInTo(['']);
@@ -48,6 +50,10 @@ const routes: Routes = [
   {
     path: 'search/:searchTerm', 
     component: HomeComponent
+  },
+  {
+    path: 'admin/delete-product', 
+    component: DeleteProductComponent
   }
 ];
 

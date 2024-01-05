@@ -35,6 +35,12 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { SearchComponent } from './components/search/search.component';
 
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { DeleteProductComponent } from './components/admin/delete-product/delete-product.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +52,8 @@ import { SearchComponent } from './components/search/search.component';
     ShoppingCartComponent,
     SuccessComponent,
     WishlistComponent,
-    SearchComponent
+    SearchComponent,
+    DeleteProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +73,10 @@ import { SearchComponent } from './components/search/search.component';
       preventDuplicates: true, // Prevents duplicate toasts from being shown
       closeButton: true // Show close button on toast notifications
     }),
-    FormsModule
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [
     AuthenticationService, 
