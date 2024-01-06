@@ -42,6 +42,7 @@ export class BookPageComponent {
           this.stars_average = await this.reviewService.averageStar(reviews);
           this.stars_percentage = await this.reviewService.percentageStar(reviews);
           this.reviewSubmitted = this.hasSubmittedReview()
+          console.log(this.reviewSubmitted)
         }
         else {
           console.error("Book with bid ${params['id']} not found")
@@ -53,7 +54,7 @@ export class BookPageComponent {
   async addToCart(book:Book) {
     this.user$.subscribe(async (user) => {
       if (user) {
-        await this.bookService.addBookTo(user, book, 'shopping-cart')
+        await this.bookService.addBookTo(user.uid, book, 'shopping-cart')
       } else {
         console.error('User data not available.');
       }
@@ -63,7 +64,7 @@ export class BookPageComponent {
   async addToWishlist(book:Book) {
     this.user$.subscribe(async (user) => {
       if (user) {
-        await this.bookService.addBookTo(user, book, 'wishlist')
+        await this.bookService.addBookTo(user.uid, book, 'wishlist')
       } else {
         console.error('User data not available.');
       }

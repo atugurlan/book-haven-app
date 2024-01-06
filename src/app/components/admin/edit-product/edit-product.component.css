@@ -1,0 +1,60 @@
+.form-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .margin-top {
+    margin-top: 16px;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="number"],
+  .form-group input[type="url"],
+  .form-group input[type="time"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .form-group mat-checkbox {
+    display: block;
+    padding: 8px;
+  }
+  
+  .form-group mat-checkbox .mat-checkbox-inner-container {
+    padding: 0;
+  }
+  
+  .form-group mat-checkbox input[type="checkbox"] {
+    margin: 0;
+  }
+  
+  .book-image {
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+  }

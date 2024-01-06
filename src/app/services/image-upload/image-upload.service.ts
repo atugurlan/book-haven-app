@@ -11,7 +11,9 @@ import { from, Observable, switchMap } from 'rxjs';
   providedIn: 'root',
 })
 export class ImageUploadService {
+
   constructor(private storage: Storage) {}
+  private storage = getStorage();
 
   uploadImage(image: File, path: string): Observable<string> {
     const storageRef = ref(this.storage, path);

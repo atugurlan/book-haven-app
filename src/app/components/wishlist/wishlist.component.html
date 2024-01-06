@@ -1,15 +1,15 @@
 <h2>Wishlist</h2>
 
-<ul>
-  <li *ngFor="let book of this.wishlist">
+<ul *ngIf="this.wishlist && this.wishlist.items && this.wishlist.items.length != 0">
+  <li *ngFor="let book of this.wishlist.items">
     <div class="left-side">
       <div>
-        <img [src]="book.bookcoverURL" [alt]="book.title">
+        <img [src]="book.book.bookcoverURL" [alt]="book.book.title">
       </div>
   
       <div class="title">
-        <span><p>{{book.title}}</p></span>
-        <span><p>by {{book.author}}</p></span>
+        <span><p>{{book.book.title}}</p></span>
+        <span><p>by {{book.book.author}}</p></span>
       </div>
     </div>
 
@@ -19,7 +19,7 @@
         <p *ngIf="!checkAvailability(book)">Out of stock</p>
       </div>
       <div class="display-price">
-        <span class="price">{{book.price | currency: 'RON '}}</span>
+        <span class="price">{{book.book.price | currency: 'RON '}}</span>
       </div>
   
       <div>

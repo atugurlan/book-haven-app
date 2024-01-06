@@ -9,6 +9,9 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { SuccessComponent } from './components/success/success.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { DeleteProductComponent } from './components/admin/delete-product/delete-product.component';
+import { AddProductComponent } from './components/admin/add-product/add-product.component';
+import { PreviousOrdersComponent } from './components/previous-orders/previous-orders.component';
+import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
@@ -48,12 +51,33 @@ const routes: Routes = [
     ...canActivate(redirectToLogin)
   },
   {
+    path: 'my_orders',
+    component: PreviousOrdersComponent,
+    ...canActivate(redirectToLogin)
+  },
+  {
     path: 'search/:searchTerm', 
-    component: HomeComponent
+    component: HomeComponent,
+    ...canActivate(redirectToLogin)
   },
   {
     path: 'admin/delete-product', 
-    component: DeleteProductComponent
+    component: DeleteProductComponent,
+    ...canActivate(redirectToLogin)
+  },
+  {
+    path: 'admin/add-product',
+    component: AddProductComponent,
+    ...canActivate(redirectToLogin)
+  },
+  {
+    path: 'admin/edit-product-form',
+    component: EditProductComponent,
+    ...canActivate(redirectToLogin)
+  },
+  {
+    path: 'genre/:genre',
+    component: HomeComponent
   }
 ];
 

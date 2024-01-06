@@ -72,6 +72,11 @@ img {
 	width: 60%;
 }
 
+.star-rating-container {
+    display: flex; 
+    align-items: center; 
+}
+
 .star-rating {
 	display: flex;
 	flex-direction: row-reverse;
@@ -112,6 +117,22 @@ img {
 .radio-input:checked ~ .radio-label:hover ~ .radio-label,
 .radio-label:hover ~ .radio-input:checked ~ .radio-label {
 	color: darkgoldenrod;
+}
+
+.add-review-button {
+    display: block;
+    margin-top: 10px;
+    padding: 10px; 
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-review-button:hover {
+    background-color: #45a049;
 }
 
 .reviews-summary .average-rating {
