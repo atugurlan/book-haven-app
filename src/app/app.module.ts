@@ -41,12 +41,6 @@ import { AddProductComponent } from './components/admin/add-product/add-product.
 import { TagsComponent } from './components/tags/tags.component';
 import { PreviousOrdersComponent } from './components/previous-orders/previous-orders.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
-
-
-
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { DeleteProductComponent } from './components/admin/delete-product/delete-product.component';
 
 
@@ -91,10 +85,7 @@ import { DeleteProductComponent } from './components/admin/delete-product/delete
       // preventDuplicates: true, // Prevents duplicate toasts from being shown
       // closeButton: true // Show close button on toast notifications
     }),
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule
+    FormsModule
   ],
   providers: [
     AuthenticationService, 

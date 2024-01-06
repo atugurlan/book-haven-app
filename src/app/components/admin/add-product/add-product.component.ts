@@ -48,7 +48,7 @@ export class AddProductComponent {
   ) {}
 
   async saveBookDetails() {
-    const { bid, title, author, price, quantity, genre, description } = this.productForm.value;
+    const { title, author, price, quantity, genre, description } = this.productForm.value;
 
     let newId_int = await this.bookService.getNumberOfBooks() + 1;
     let newId_string = newId_int.toString()
@@ -78,6 +78,7 @@ export class AddProductComponent {
 
   async uploadBookCover(event: any): Promise<void> {7
     let book = await this.bookService.getLastBook();
+    console.log(book)
     
     this.imageUploadService
       .uploadImage(event.target.files[0], `images/books/${book.title}`)
