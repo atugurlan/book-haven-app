@@ -40,6 +40,7 @@ import { SearchComponent } from './components/search/search.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { PreviousOrdersComponent } from './components/previous-orders/previous-orders.component';
+import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 
 
 
@@ -57,7 +58,8 @@ import { PreviousOrdersComponent } from './components/previous-orders/previous-o
     SearchComponent,
     AddProductComponent,
     TagsComponent,
-    PreviousOrdersComponent
+    PreviousOrdersComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
