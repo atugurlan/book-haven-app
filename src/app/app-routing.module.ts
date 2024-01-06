@@ -10,6 +10,7 @@ import { SuccessComponent } from './components/success/success.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { PreviousOrdersComponent } from './components/previous-orders/previous-orders.component';
+import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
@@ -60,6 +61,11 @@ const routes: Routes = [
   {
     path: 'admin/add-product',
     component: AddProductComponent
+  },
+  {
+    path: 'admin/edit-product-form',
+    component: EditProductComponent,
+    ...canActivate(redirectToLogin)
   },
   {
     path: 'genre/:genre',

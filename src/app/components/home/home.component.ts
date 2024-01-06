@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book/book.service';
+import { UsersService } from 'src/app/services/users/users.service';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +11,12 @@ import { BookService } from 'src/app/services/book/book.service';
 })
 export class HomeComponent implements OnInit {
   books:Book[] = [];
+  user$ = this.usersService.currentUserProfile$;
 
   constructor(private bookService: BookService,
               private route: ActivatedRoute,
-              private router: Router) { }  
+              private router: Router,
+              private usersService: UsersService) { }  
 
   async ngOnInit(): Promise<void> {
     this.route.params.subscribe( async params => {
@@ -28,6 +31,11 @@ export class HomeComponent implements OnInit {
       else
         this.books =  await this.bookService.allBooks();
     });
+  }
+
+  goToProductForm(food: Book) {
+    this.bookService.setBook(food);
+    this.router.navigate(['/admin/edit-product-form']);
   }
 
 }
