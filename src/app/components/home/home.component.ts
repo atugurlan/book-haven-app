@@ -33,8 +33,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  goToProductForm(food: Book) {
-    this.bookService.setBook(food);
+  goToDeleteBook(book: Book) {
+    this.bookService.setBook(book);
+    this.router.navigate(['/admin/delete-product']);
+  }
+  
+  goToProductForm(book: Book) {
+    this.bookService.setBook(book);
     this.router.navigate(['/admin/edit-product-form']);
   }
 

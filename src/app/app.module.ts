@@ -44,6 +44,12 @@ import { EditProductComponent } from './components/admin/edit-product/edit-produ
 
 
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { DeleteProductComponent } from './components/admin/delete-product/delete-product.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +62,7 @@ import { EditProductComponent } from './components/admin/edit-product/edit-produ
     SuccessComponent,
     WishlistComponent,
     SearchComponent,
+    DeleteProductComponent,
     AddProductComponent,
     TagsComponent,
     PreviousOrdersComponent,
@@ -84,7 +91,10 @@ import { EditProductComponent } from './components/admin/edit-product/edit-produ
       // preventDuplicates: true, // Prevents duplicate toasts from being shown
       // closeButton: true // Show close button on toast notifications
     }),
-    FormsModule
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [
     AuthenticationService, 

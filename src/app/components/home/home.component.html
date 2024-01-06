@@ -19,11 +19,10 @@
                     <p>Price: {{book.price}} lei</p>
                 </div>
             </a>
-
-            <div *ngIf="user$ | async as user">
-                <button *ngIf="user.isAdmin" class="edit-button" (click)="goToProductForm(book)">Edit</button>
-            </div>
-
+        </div>
+        <div *ngIf="user$ | async as user">
+            <button *ngIf="user.isAdmin" class="delete-button" (click)="goToDeleteBook(book)">Delete</button>
+            <button *ngIf="user.isAdmin" class="edit-button" (click)="goToProductForm(book)">Edit</button>
         </div>
     </li>
 </ul>

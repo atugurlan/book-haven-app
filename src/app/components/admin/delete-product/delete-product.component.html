@@ -1,0 +1,14 @@
+<div class="delete-product-container">
+    <h2 class="delete-product-title">Delete Book</h2>
+    <div class="book-details" *ngIf="bookToDelete">
+      <p><strong>Title:</strong> {{ bookToDelete.title }}</p>
+      <p><strong>Author:</strong> {{ bookToDelete.author }}</p>
+      <p><strong>Price:</strong> {{ bookToDelete.price }}</p>
+    </div>
+    <div class="confirmation-section">
+      <p class="confirmation-text">Are you sure you want to delete this book?</p>
+      <button class="delete-button" (click)="deleteBook()">Delete</button>
+      <button class="cancel-button" [routerLink]="['']">Cancel</button>
+    </div>
+  </div>
+  

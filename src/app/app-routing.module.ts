@@ -8,6 +8,7 @@ import { BookPageComponent } from './components/book-page/book-page.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { SuccessComponent } from './components/success/success.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { DeleteProductComponent } from './components/admin/delete-product/delete-product.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { PreviousOrdersComponent } from './components/previous-orders/previous-orders.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
@@ -56,11 +57,18 @@ const routes: Routes = [
   },
   {
     path: 'search/:searchTerm', 
-    component: HomeComponent
+    component: HomeComponent,
+    ...canActivate(redirectToLogin)
+  },
+  {
+    path: 'admin/delete-product', 
+    component: DeleteProductComponent,
+    ...canActivate(redirectToLogin)
   },
   {
     path: 'admin/add-product',
-    component: AddProductComponent
+    component: AddProductComponent,
+    ...canActivate(redirectToLogin)
   },
   {
     path: 'admin/edit-product-form',
