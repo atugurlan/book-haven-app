@@ -11,7 +11,7 @@ import { BookService } from 'src/app/services/book/book.service';
 })
 export class DeleteProductComponent implements OnInit {
   bookIdToDelete!: string;
-  bookToDelete!: Book | undefined;
+  bookToDelete!: Book;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,8 +21,8 @@ export class DeleteProductComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
+    this.bookToDelete = await this.bookService.getBook();
     this.bookIdToDelete = this.route.snapshot.params['bid'];
-    this.bookToDelete = await this.bookService.getBookByBID(this.bookIdToDelete);
   }
 
   async deleteBook(): Promise<void> {
@@ -30,11 +30,11 @@ export class DeleteProductComponent implements OnInit {
       const confirmed = confirm(`Are you sure you want to delete "${this.bookToDelete.title}"?`);
       
       if (confirmed) {
-        this.bookService.deleteBook(this.bookIdToDelete)
+        this.bookService.deleteBook(this.bookToDelete.bid)
           .subscribe(
             () => {
               this.toastr.success('Book deleted successfully!');
-              this.router.navigate(['/book']); 
+              this.router.navigate(['/']); 
             },
             () => {
               this.toastr.error('There was an error in deleting the book!');
