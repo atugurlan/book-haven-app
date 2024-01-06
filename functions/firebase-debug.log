@@ -1,0 +1,80 @@
+[debug] [2024-01-06T17:47:40.800Z] ----------------------------------------------------------------------
+[debug] [2024-01-06T17:47:40.802Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\tugur\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js use --add
+[debug] [2024-01-06T17:47:40.803Z] CLI Version:   13.0.2
+[debug] [2024-01-06T17:47:40.803Z] Platform:      win32
+[debug] [2024-01-06T17:47:40.803Z] Node Version:  v18.18.0
+[debug] [2024-01-06T17:47:40.804Z] Time:          Sat Jan 06 2024 19:47:40 GMT+0200 (Eastern European Standard Time)
+[debug] [2024-01-06T17:47:40.805Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-01-06T17:47:40.886Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-01-06T17:47:40.887Z] > authorizing via signed-in user (tugurlan.alexandra@gmail.com)
+[debug] [2024-01-06T17:47:40.893Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2024-01-06T17:47:41.604Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2024-01-06T17:47:41.605Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2024-01-06T17:48:06.077Z] ----------------------------------------------------------------------
+[debug] [2024-01-06T17:48:06.079Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\tugur\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init functions
+[debug] [2024-01-06T17:48:06.080Z] CLI Version:   13.0.2
+[debug] [2024-01-06T17:48:06.080Z] Platform:      win32
+[debug] [2024-01-06T17:48:06.081Z] Node Version:  v18.18.0
+[debug] [2024-01-06T17:48:06.082Z] Time:          Sat Jan 06 2024 19:48:06 GMT+0200 (Eastern European Standard Time)
+[debug] [2024-01-06T17:48:06.082Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-01-06T17:48:06.160Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-01-06T17:48:06.160Z] > authorizing via signed-in user (tugurlan.alexandra@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\tugur\Desktop\book-haven
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2024-01-06T17:48:09.862Z] Using project from CLI flag: book-haven-cfbba
+[debug] [2024-01-06T17:48:09.868Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/book-haven-cfbba [none]
+[debug] [2024-01-06T17:48:10.236Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/book-haven-cfbba 200
+[debug] [2024-01-06T17:48:10.237Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/book-haven-cfbba {"projectId":"book-haven-cfbba","projectNumber":"787824566791","displayName":"book-haven","name":"projects/book-haven-cfbba","resources":{"hostingSite":"book-haven-cfbba","realtimeDatabaseInstance":"book-haven-cfbba-default-rtdb","storageBucket":"book-haven-cfbba.appspot.com","locationId":"europe-west"},"state":"ACTIVE","etag":"1_bab68004-ec44-47ac-bc90-e1bc3eb7b78e"}
+[info] i  Using project book-haven-cfbba (book-haven) 
+[info] 
+=== Functions Setup
+[debug] [2024-01-06T17:48:10.245Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-01-06T17:48:10.245Z] > authorizing via signed-in user (tugurlan.alexandra@gmail.com)
+[debug] [2024-01-06T17:48:10.246Z] [iam] checking project book-haven-cfbba for permissions ["firebase.projects.get"]
+[debug] [2024-01-06T17:48:10.246Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/book-haven-cfbba:testIamPermissions [none]
+[debug] [2024-01-06T17:48:10.246Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/book-haven-cfbba:testIamPermissions x-goog-quota-user=projects/book-haven-cfbba
+[debug] [2024-01-06T17:48:10.246Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/book-haven-cfbba:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-01-06T17:48:11.043Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/book-haven-cfbba:testIamPermissions 200
+[debug] [2024-01-06T17:48:11.043Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/book-haven-cfbba:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-01-06T17:48:11.044Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/book-haven-cfbba/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-01-06T17:48:11.045Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/book-haven-cfbba/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/book-haven-cfbba
+[debug] [2024-01-06T17:48:11.047Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/book-haven-cfbba/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-01-06T17:48:11.047Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/book-haven-cfbba/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/book-haven-cfbba
+[debug] [2024-01-06T17:48:12.031Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/book-haven-cfbba/services/runtimeconfig.googleapis.com 200
+[debug] [2024-01-06T17:48:12.031Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/book-haven-cfbba/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-01-06T17:48:12.032Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/book-haven-cfbba/services/cloudfunctions.googleapis.com 200
+[debug] [2024-01-06T17:48:12.033Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/book-haven-cfbba/services/cloudfunctions.googleapis.com [omitted]
+[info] 
+Detected existing codebase(s): default
+
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+
