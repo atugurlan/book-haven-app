@@ -1,0 +1,27 @@
+<div class="orders-container">
+    <div *ngFor="let order of allOrders" class="order-card">
+      <div class="order-details">
+        <p><strong>Order ID:</strong> {{ order.id }}</p>
+        <p><strong>Status:</strong> {{ order.status }}</p>
+        <div *ngIf="orderExpanded === order.id">
+          <p><strong>Customer:</strong> {{ order.customer }}</p>
+          <p><strong>Name:</strong> {{ order.name }}</p>
+          <p><strong>Email:</strong> {{ order.email }}</p>
+          <p><strong>Phone:</strong> {{ order.phone }}</p>
+          <p><strong>Address:</strong> {{ order.address }}</p>
+          <p><strong>Price:</strong> {{ order.price }}</p>
+          <p><strong>Cart:</strong> {{ order.cart }}</p>
+        </div>
+        <button (click)="toggleExpandedOrder(order.id)">
+          {{ orderExpanded === order.id ? 'Hide Details' : 'Show Details' }}
+        </button>
+      </div>
+      <div class="status-buttons">
+        <button *ngIf="!hideAcceptButton(order)" (click)="changeOrderStatus(order, 'Accepted')">Accept</button>
+        <button *ngIf="!hideInProgressButton(order)" (click)="changeOrderStatus(order, 'InDeliveryProgress')">Set In Delivery Progress</button>
+        <button *ngIf="!hideDeliveredButton(order)" (click)="changeOrderStatus(order, 'SuccessfullyDelivered')">Set Successfully Delivered</button>
+      </div>
+    </div>
+  </div>
+  
+  
