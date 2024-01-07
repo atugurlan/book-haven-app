@@ -19,7 +19,7 @@ export class PreviousOrdersComponent {
   async getCustomerOrders() {
     this.user$.subscribe( async (user) => {
       if(user) {
-        this.customerOrder = await this.ordersService.getAllCustomerOrders(user.uid);
+        this.customerOrder = await this.ordersService.getAllOrders();
         console.log(this.customerOrder);
       }
       return this.customerOrder;

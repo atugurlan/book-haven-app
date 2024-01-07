@@ -180,4 +180,9 @@ export class BookService {
             books.filter(book => book.genre?.includes(genre));
   }
 
+  async getOutOfStockBooks(): Promise<Book[]> {
+    const books = await this.allBooks();
+    return books.filter(book => book.quantity === 0);
+  }
+
 }

@@ -42,6 +42,8 @@ import { TagsComponent } from './components/tags/tags.component';
 import { PreviousOrdersComponent } from './components/previous-orders/previous-orders.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 import { DeleteProductComponent } from './components/admin/delete-product/delete-product.component';
+import { GetStatisticsComponent } from './components/admin/get-statistics/get-statistics.component';
+import { BookService } from './services/book/book.service';
 
 
 @NgModule({
@@ -60,7 +62,8 @@ import { DeleteProductComponent } from './components/admin/delete-product/delete
     AddProductComponent,
     TagsComponent,
     PreviousOrdersComponent,
-    EditProductComponent
+    EditProductComponent,
+    GetStatisticsComponent
   ],
   imports: [
     BrowserModule,
