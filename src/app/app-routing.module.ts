@@ -12,6 +12,7 @@ import { DeleteProductComponent } from './components/admin/delete-product/delete
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { PreviousOrdersComponent } from './components/previous-orders/previous-orders.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
+import { SetDiscountsComponent } from './components/admin/set-discounts/set-discounts.component';
 
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
@@ -74,6 +75,11 @@ const routes: Routes = [
     path: 'admin/edit-product-form',
     component: EditProductComponent,
     ...canActivate(redirectToLogin)
+  },
+  {
+    path: 'admin/set-discounts',
+    component: SetDiscountsComponent,
+    //...canActivate(redirectToLogin)
   },
   {
     path: 'genre/:genre',

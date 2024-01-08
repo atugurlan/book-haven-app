@@ -1,0 +1,15 @@
+<form (ngSubmit)="applyDiscounts()">
+    <div>
+      <label for="discountReason">Discount Reason:</label>
+      <input type="text" id="discountReason" name="discountReason" [(ngModel)]="discountReason" required>
+    </div>
+    <div>
+      <label for="discountPercentage">Discount Percentage:</label>
+      <input type="number" id="discountPercentage" name="discountPercentage" [(ngModel)]="discountPercentage" required>
+    </div>
+    <button type="submit">Apply Discount</button>
+    <button (click)="removeDiscounts()">Remove Discounts</button>
+  </form>
+  
+  
+  
