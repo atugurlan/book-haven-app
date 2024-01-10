@@ -42,8 +42,9 @@ import { TagsComponent } from './components/tags/tags.component';
 import { PreviousOrdersComponent } from './components/previous-orders/previous-orders.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 import { DeleteProductComponent } from './components/admin/delete-product/delete-product.component';
+import { GetStatisticsComponent } from './components/admin/get-statistics/get-statistics.component';
+import { BookService } from './services/book/book.service';
 import { ManageOrdersComponent } from './components/admin/manage-orders/manage-orders.component';
-
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { ManageOrdersComponent } from './components/admin/manage-orders/manage-o
     TagsComponent,
     PreviousOrdersComponent,
     EditProductComponent,
+    GetStatisticsComponent,
     ManageOrdersComponent
   ],
   imports: [

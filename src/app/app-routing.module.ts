@@ -12,6 +12,7 @@ import { DeleteProductComponent } from './components/admin/delete-product/delete
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { PreviousOrdersComponent } from './components/previous-orders/previous-orders.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
+import { GetStatisticsComponent } from './components/admin/get-statistics/get-statistics.component';
 import { ManageOrdersComponent } from './components/admin/manage-orders/manage-orders.component';
 
 
@@ -74,6 +75,11 @@ const routes: Routes = [
   {
     path: 'admin/edit-product-form',
     component: EditProductComponent,
+    ...canActivate(redirectToLogin)
+  },
+  {
+    path: 'admin/get-statistics',
+    component: GetStatisticsComponent,
     ...canActivate(redirectToLogin)
   },
   {

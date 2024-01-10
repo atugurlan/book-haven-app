@@ -1,0 +1,39 @@
+<div class="statistics-container">
+    <div class="row">
+      <div class="statistic-box">
+        <h2>Most Ordered Books</h2>
+        <ul>
+            <li *ngFor="let book of mostOrderedBooks">
+                {{book.bookId}} - ordered: {{book.count}} times
+            </li>
+        </ul>
+      </div>
+      <div class="statistic-box">
+        <h2>Most Added Books To Wishlist</h2>
+        <ul>
+            <li *ngFor="let book of mostWishlistAddedBooks">
+                {{book.bookId}} - added to wishlist: {{book.count}} times
+            </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="statistic-box">
+        <h2>Top Rated Books</h2>
+        <ul>
+            <li *ngFor="let book of topRatedBooks">
+                {{book.bookId}} - average star rating: {{book.averageRating}} stars
+            </li>
+        </ul>
+      </div>
+      <div class="statistic-box">
+        <h2>Out of Stock Books</h2>
+        <ul>
+            <li *ngFor="let book of outOfStockBooks">
+                {{book.title}} - quantity: {{book.quantity}}
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

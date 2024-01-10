@@ -70,10 +70,39 @@ export class OrderService {
     });
   }
 
-  async getAllCustomerOrders(id:string):Promise<Order[]> {
-    const orders = await this.getAllOrders();
-    let customerOrders = orders.filter(order => order.customer == id);
-    return customerOrders;
+  async getMostOrderedBooks(): Promise<{ bookId: string, count: number }[]> {
+    const orders: Order[] = await this.getAllOrders();
+  
+    const bookOrderCountMap: Map<string, number> = new Map();
+  
+    orders.forEach(order => {
+      const cartItems = order.cart.split(', '); // Assuming the cart items are separated by ', '
+  
+      cartItems.forEach(item => {
+        const [quantityString, ...titleParts] = item.trim().split(' x '); // Splitting quantity and title
+        
+        const quantity = parseInt(quantityString, 10); // Convert quantity to a number
+        const title = titleParts.join(' x '); // Reconstruct the book title in case it contains 'x'
+  
+        // Ensure title exists in the map
+        if (bookOrderCountMap.has(title)) {
+          bookOrderCountMap.set(title, bookOrderCountMap.get(title)! + quantity);
+        } else {
+          bookOrderCountMap.set(title, quantity);
+        }
+      });
+    });
+  
+    // Convert map to an array of objects for easier sorting and manipulation
+    const bookOrderCounts: { bookId: string, count: number }[] = [];
+    bookOrderCountMap.forEach((count, bookId) => {
+      bookOrderCounts.push({ bookId, count });
+    });
+  
+    // Sort books by order count in descending order
+    bookOrderCounts.sort((a, b) => b.count - a.count);
+  
+    return bookOrderCounts;
   }
 
   updateOrderStatus(orderId: string, newStatus: string): Observable<void> {
