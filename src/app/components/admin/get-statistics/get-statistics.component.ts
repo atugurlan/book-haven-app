@@ -49,13 +49,10 @@ export class GetStatisticsComponent implements OnInit {
       wishlistCountMap.set(bookId, (wishlistCountMap.get(bookId) || 0) + 1);
     });
 
-    // Convert map to an array of objects for sorting
     const wishlistCountArray = Array.from(wishlistCountMap, ([bookId, count]) => ({ bookId, count }));
 
-    // Sort the wishlistCountArray by count in descending order
     wishlistCountArray.sort((a, b) => b.count - a.count);
 
-    // Assign the sorted wishlistCountArray to mostWishlistAddedBooks
     this.mostWishlistAddedBooks = wishlistCountArray;
   }
 
@@ -82,7 +79,6 @@ export class GetStatisticsComponent implements OnInit {
         topRatedBooks.push({ bookId, averageRating });
       }
   
-      // Sort topRatedBooks by averageRating in descending order
       topRatedBooks.sort((a, b) => b.averageRating - a.averageRating);
   
       this.topRatedBooks = topRatedBooks;

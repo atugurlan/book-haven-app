@@ -79,7 +79,7 @@ const routes: Routes = [
   {
     path: 'admin/get-statistics',
     component: GetStatisticsComponent,
-    //...canActivate(redirectToLogin)
+    ...canActivate(redirectToLogin)
   },
   {
     path: 'genre/:genre',
