@@ -44,11 +44,11 @@ export class ManageOrdersComponent implements OnInit {
   }
 
   hideAcceptButton(order: Order): boolean {
-    return order.status === 'Accepted';
+    return order.status === 'Accepted' || order.status === 'InDeliveryProgress' || order.status === 'SuccessfullyDelivered';
   }
 
   hideInProgressButton(order: Order): boolean {
-    return order.status === 'InDeliveryProgress' || order.status === 'Accepted';
+    return order.status === 'InDeliveryProgress' || order.status === 'SuccessfullyDelivered';
   }
 
   hideDeliveredButton(order: Order): boolean {

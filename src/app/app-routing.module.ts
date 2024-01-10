@@ -79,7 +79,7 @@ const routes: Routes = [
   {
     path: 'admin/manage-orders',
     component: ManageOrdersComponent,
-    //...canActivate(redirectToLogin)
+    ...canActivate(redirectToLogin)
   },
   {
     path: 'genre/:genre',
