@@ -13,6 +13,7 @@ import { AddProductComponent } from './components/admin/add-product/add-product.
 import { PreviousOrdersComponent } from './components/previous-orders/previous-orders.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 import { GetStatisticsComponent } from './components/admin/get-statistics/get-statistics.component';
+import { ManageOrdersComponent } from './components/admin/manage-orders/manage-orders.component';
 
 
 const redirectToLogin = () => redirectUnauthorizedTo(['login']);
@@ -79,6 +80,11 @@ const routes: Routes = [
   {
     path: 'admin/get-statistics',
     component: GetStatisticsComponent,
+    ...canActivate(redirectToLogin)
+  },
+  {
+    path: 'admin/manage-orders',
+    component: ManageOrdersComponent,
     ...canActivate(redirectToLogin)
   },
   {

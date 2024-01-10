@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cart } from 'src/app/models/cart';
-import { Firestore, collection, doc, getDocs, setDoc } from '@angular/fire/firestore';
-import { from } from 'rxjs';
+import { Firestore, collection, doc, getDocs, setDoc, updateDoc } from '@angular/fire/firestore';
+import { Observable, from } from 'rxjs';
 import { ProfileUser } from 'src/app/models/user-profile';
 import { Order } from 'src/app/models/order';
 import { CartService } from '../cart/cart-service.service';
@@ -104,8 +104,10 @@ export class OrderService {
   
     return bookOrderCounts;
   }
-  
-  
 
+  updateOrderStatus(orderId: string, newStatus: string): Observable<void> {
+    const orderRef = doc(this.firestore, 'orders', orderId);
+    return from(updateDoc(orderRef, { status: newStatus }));
+  }
 
 }

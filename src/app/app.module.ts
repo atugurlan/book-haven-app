@@ -44,7 +44,7 @@ import { EditProductComponent } from './components/admin/edit-product/edit-produ
 import { DeleteProductComponent } from './components/admin/delete-product/delete-product.component';
 import { GetStatisticsComponent } from './components/admin/get-statistics/get-statistics.component';
 import { BookService } from './services/book/book.service';
-
+import { ManageOrdersComponent } from './components/admin/manage-orders/manage-orders.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +63,8 @@ import { BookService } from './services/book/book.service';
     TagsComponent,
     PreviousOrdersComponent,
     EditProductComponent,
-    GetStatisticsComponent
+    GetStatisticsComponent,
+    ManageOrdersComponent
   ],
   imports: [
     BrowserModule,
