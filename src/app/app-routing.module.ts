@@ -79,7 +79,7 @@ const routes: Routes = [
   {
     path: 'admin/set-discounts',
     component: SetDiscountsComponent,
-    //...canActivate(redirectToLogin)
+    ...canActivate(redirectToLogin)
   },
   {
     path: 'genre/:genre',
