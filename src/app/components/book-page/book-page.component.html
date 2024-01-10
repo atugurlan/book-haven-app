@@ -80,7 +80,7 @@
 
         <div class="opinions">
             <div *ngIf="user$ | async as user">
-                <div *ngIf="reviewSubmitted==false">
+                <div *ngIf="reviewSubmitted==true">
                     <h2>Add your own review</h2>
                     
                     <div class="star-rating-container">
@@ -108,7 +108,7 @@
         
                     <button class="add-review-button" (click)="addReview()">Add review</button>
                 </div>
-                <div *ngIf="reviewSubmitted">
+                <div *ngIf="reviewSubmitted==false">
                     <p>You have already submitted a review</p>
                 </div>
             </div>
