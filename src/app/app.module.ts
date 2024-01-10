@@ -42,6 +42,7 @@ import { TagsComponent } from './components/tags/tags.component';
 import { PreviousOrdersComponent } from './components/previous-orders/previous-orders.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 import { DeleteProductComponent } from './components/admin/delete-product/delete-product.component';
+import { ManageOrdersComponent } from './components/admin/manage-orders/manage-orders.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { DeleteProductComponent } from './components/admin/delete-product/delete
     AddProductComponent,
     TagsComponent,
     PreviousOrdersComponent,
-    EditProductComponent
+    EditProductComponent,
+    ManageOrdersComponent
   ],
   imports: [
     BrowserModule,
