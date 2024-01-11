@@ -45,11 +45,13 @@ export class GetStatisticsComponent implements OnInit {
     const wishlistCountMap = new Map<string, number>();
 
     wishlist.items.forEach((wishlistItem) => {
-      const bookId = wishlistItem.book.bid;
-      wishlistCountMap.set(bookId, (wishlistCountMap.get(bookId) || 0) + 1);
+      const bookTitle = wishlistItem.book.title;
+      wishlistCountMap.set(bookTitle, (wishlistCountMap.get(bookTitle) || 0) + 1);
     });
 
-    const wishlistCountArray = Array.from(wishlistCountMap, ([bookId, count]) => ({ bookId, count }));
+    console.log(wishlistCountMap);
+
+    const wishlistCountArray = Array.from(wishlistCountMap, ([bookTitle, count]) => ({ bookTitle, count }));
 
     wishlistCountArray.sort((a, b) => b.count - a.count);
 

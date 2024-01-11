@@ -41,7 +41,7 @@ export class BookPageComponent {
           this.reviews = reviews;
           this.stars_average = await this.reviewService.averageStar(reviews);
           this.stars_percentage = await this.reviewService.percentageStar(reviews);
-          this.reviewSubmitted = this.hasSubmittedReview()
+          this.reviewSubmitted = await this.hasSubmittedReview()
           console.log(this.reviewSubmitted)
         }
         else {
@@ -71,16 +71,17 @@ export class BookPageComponent {
     });
   }
 
-  hasSubmittedReview() {
-    this.user$.subscribe(async (user) => {
-      if (user) {
-        return this.reviews.some((review) => review.uid === user.uid);
-      } else {
-        console.error('User data not available.');
-        return false
-      }
+  async hasSubmittedReview() {
+    return new Promise<boolean>((resolve) => {
+      this.user$.subscribe(async (user) => {
+        if (user) {
+          resolve(this.reviews.some((review) => review.uid === user.uid && review.bid === this.book.bid));
+        } else {
+          console.error('User data not available.');
+          resolve(false);
+        }
+      });
     });
-    return false
   }
 
   async addReview() {
