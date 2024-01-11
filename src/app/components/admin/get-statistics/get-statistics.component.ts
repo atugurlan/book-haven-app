@@ -62,21 +62,23 @@ export class GetStatisticsComponent implements OnInit {
     try {
       const allReviews = await this.reviewService.allReviews();
   
-      const reviewsByBookId: { [key: string]: Review[] } = {};
+      const reviewsByBookTitle: { [key: string]: Review[] } = {};
   
       allReviews.forEach((review) => {
-        const bookId = review.bid || 'unknown';
-        if (!reviewsByBookId[bookId]) {
-          reviewsByBookId[bookId] = [];
+        const bookTitle = review.title || 'unknown';
+        if (!reviewsByBookTitle[bookTitle]) {
+          reviewsByBookTitle[bookTitle] = [];
         }
-        reviewsByBookId[bookId].push(review);
+        reviewsByBookTitle[bookTitle].push(review);
       });
+
+      console.log(reviewsByBookTitle)
   
-      const bookIds = Object.keys(reviewsByBookId);
+      const bookTitles = Object.keys(reviewsByBookTitle);
       const topRatedBooks: { bookId: string, averageRating: number }[] = [];
   
-      for (const bookId of bookIds) {
-        const reviewsForBook = reviewsByBookId[bookId];
+      for (const bookId of bookTitles) {
+        const reviewsForBook = reviewsByBookTitle[bookId];
         const averageRating = await this.reviewService.averageStar(reviewsForBook || []);
         topRatedBooks.push({ bookId, averageRating });
       }

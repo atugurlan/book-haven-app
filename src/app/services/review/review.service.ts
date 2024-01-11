@@ -27,6 +27,7 @@ export class ReviewService {
         rid: doc.id,
         uid: reviewData.uid,
         bid: reviewData.bid,
+        title: reviewData.title,
         name: reviewData.name,
         stars: reviewData.stars,
         review: reviewData.review
