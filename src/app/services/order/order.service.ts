@@ -57,7 +57,7 @@ export class OrderService {
       name: name,
       address: user.address,
       phone: user.phone,
-      status: 'new'
+      status: 'New'
     };
     const ref = doc(this.firestore, 'orders', order.id.toString());
 

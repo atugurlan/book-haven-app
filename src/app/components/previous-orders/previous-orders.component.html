@@ -1,10 +1,13 @@
 <ul>
+  <div *ngFor='let status of statuses'>
+    <h2>{{ status }}</h2>
     <li *ngFor='let order of customerOrder'>
-      <div class="order-container">
+      <div *ngIf="order.status==status" class="order-container">
         <div class="order-details">
           <p><strong>Products:</strong> {{ order.cart }}</p>
           <p><strong>Total Price:</strong> {{ order.price | currency: 'RON ' }}</p>
         </div>
       </div>
     </li>
+  </div>
 </ul>

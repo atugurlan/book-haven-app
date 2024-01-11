@@ -11,11 +11,16 @@ import { UsersService } from 'src/app/services/users/users.service';
 export class PreviousOrdersComponent {
   user$ = this.usersService.currentUserProfile$;
   customerOrder!:Order[];
+  statuses!:string[];
   
   constructor(private usersService: UsersService, private ordersService: OrderService) {
     this.getCustomerOrders();
-   }
+    this.getStatuses();
+  }
 
+ getStatuses() {
+   this.statuses =  ['New', 'Accepted', 'InDeliveryProgress','SuccessfullyDelivered']
+ }
   async getCustomerOrders() {
     this.user$.subscribe( async (user) => {
       if(user) {
