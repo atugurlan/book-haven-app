@@ -152,6 +152,7 @@ export class BookService {
       'Romance': 0,
       'Fantasy': 0,
       'Biography': 0,
+      'Autobiography': 0,
       'History': 0,
       'Horror': 0,
       'Poetry': 0,
